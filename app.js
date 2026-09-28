@@ -85,9 +85,40 @@ if($('#serviceSelect')){
   updateHeightOptions(); calc();
 }
 
-function closeMenu(){ $('#mobileMenu')?.classList.remove('open'); $('#mobileMenu')?.setAttribute('aria-hidden','true'); }
-$('#menuBtn')?.addEventListener('click',()=>{ $('#mobileMenu')?.classList.add('open'); $('#mobileMenu')?.setAttribute('aria-hidden','false'); });
-$('#menuClose')?.addEventListener('click',closeMenu); $$('#mobileMenu a').forEach(a=>a.addEventListener('click',closeMenu));
+const mobileMenu=$('#mobileMenu');
+const menuBtn=$('#menuBtn');
+const menuClose=$('#menuClose');
+let menuReturnFocus=null;
+
+function setMenu(open,{restoreFocus=true}={}){
+  if(!mobileMenu) return;
+  mobileMenu.classList.toggle('open',open);
+  mobileMenu.setAttribute('aria-hidden',String(!open));
+  menuBtn?.setAttribute('aria-expanded',String(open));
+  document.body.classList.toggle('menu-open',open);
+  if(open){
+    menuReturnFocus=document.activeElement;
+    requestAnimationFrame(()=>menuClose?.focus());
+  }else if(restoreFocus && menuReturnFocus instanceof HTMLElement){
+    menuReturnFocus.focus();
+  }
+}
+function closeMenu(options){ setMenu(false,options); }
+menuBtn?.addEventListener('click',()=>setMenu(true));
+menuClose?.addEventListener('click',()=>closeMenu());
+$$('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>closeMenu({restoreFocus:false})));
+mobileMenu?.addEventListener('click',e=>{ if(e.target===mobileMenu) closeMenu(); });
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape' && mobileMenu?.classList.contains('open')) closeMenu();
+  if(e.key==='Tab' && mobileMenu?.classList.contains('open')){
+    const focusables=[...mobileMenu.querySelectorAll('a,button')].filter(el=>!el.disabled);
+    if(!focusables.length) return;
+    const first=focusables[0], last=focusables[focusables.length-1];
+    if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+  }
+});
+window.addEventListener('resize',()=>{ if(window.innerWidth>1020 && mobileMenu?.classList.contains('open')) closeMenu({restoreFocus:false}); });
 
 const headerEl=$('.header'); const navItems=$$('[data-nav-target]');
 const tracked=['service','price','contact'].map(id=>document.getElementById(id)).filter(Boolean);

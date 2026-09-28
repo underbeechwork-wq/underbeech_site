@@ -19,10 +19,7 @@ const defaults = {
     leveling: 200, sheet: 2000, gravel: 2000,
     handShears: 1000
   },
-  works: [
-    { id: 1, title: '庭木剪定', desc: '施工前・施工後の写真で施工内容を紹介します。', price: '料金例 18,000円', before: '', after: '' },
-    { id: 2, title: '防草シート施工', desc: '施工面積と使用材料を掲載できます。', price: '料金例 45,000円', before: '', after: '' }
-  ]
+  works: []
 };
 
 let data = load();
@@ -79,6 +76,8 @@ function renderAll() {
 function renderWorks() {
   const box = $('#worksGrid');
   box.innerHTML = '';
+  const empty = document.querySelector('#worksEmpty');
+  if (empty) empty.classList.toggle('hidden', data.works.length > 0);
   data.works.slice(0, 4).forEach(w => {
     const el = document.createElement('article');
     el.className = 'work-card';

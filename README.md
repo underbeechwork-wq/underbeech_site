@@ -1,3 +1,9 @@
+# v14 独自ドメイン対応版
+
+正式URL: https://underbeech.com/
+
+GitHub Pages の Custom domain は `underbeech.com`、Cloudflare DNS は GitHub Pages 向けに設定し、Enforce HTTPS を有効にした状態で使用してください。
+
 # 植木屋 アンダービーチ 移植版 v7（日本語中心版）
 
 若い層・初めて植木屋へ依頼する人が「頼みやすい」と感じる方向へデザインを調整したデモです。
@@ -41,3 +47,35 @@
 - 対応エリアの全市区町村をサイト画面上にも表示
 - 埼玉県と東京都を分けて見やすいタグ形式に変更
 - 事業者情報の対応地域表示から詳細一覧へ誘導
+
+
+## v11 川越SEO強化
+- トップページのtitle/H1を「川越市の造園・植木屋」向けに調整
+- kawagoe.html：川越市の造園・植木屋ページ
+- sentei.html：庭木剪定
+- bassai.html：伐採・伐根
+- josou.html：草刈り・除草
+- bousou-sheet.html：防草シート・砂利敷き
+- privacy.html：プライバシーポリシー
+- sitemap.xmlへ全ページを追加
+
+独自ドメイン https://underbeech.com/ への canonical・og:url・構造化データ・sitemap.xml・robots.txt の切り替えは完了済みです。
+
+
+## v12 追加内容
+- 施工事例一覧 `works/` を追加
+- 仮の施工事例を初期表示しないよう修正
+- 施工事例追加用の noindex テンプレートを追加
+- 川越ページによくある質問を追加
+- FAQPage構造化データを追加
+- sitemap.xml に施工事例一覧を追加
+
+
+## v13 追加内容
+- 対応エリア専用ページ（area.html）
+- よくある質問ページ（faq.html）とFAQ構造化データ
+- 404ページ
+- スマホ下部の「電話する / 相談する」導線
+- トップページの「目的から探す」内部リンク
+- 施工事例テンプレートにArticle構造化データの雛形を追加
+- sitemap.xmlへ対応エリア・FAQを追加

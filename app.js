@@ -1,10 +1,10 @@
-const KEY = 'underbeech_v6_demo';
+const KEY = 'underbeech_v9_public';
 
 const defaults = {
   brand: '植木屋 アンダービーチ',
-  phone: '000-0000-0000',
-  email: 'info@example.com',
-  area: '営業地域を入力',
+  phone: '090-7079-5989',
+  email: '',
+  area: '埼玉県・東京都の各対応エリア',
   conceptTitle: '頼みやすい植木屋を、\nもっと身近に。',
   conceptText: '「植木屋さんに頼みたいけど、いくらかかるか分からない」「電話するほどか迷う」。そんな不安を減らせるように、料金の目安を公開し、庭木1本から気軽に相談できるようにしています。',
   seoTitle: '植木屋 アンダービーチ｜剪定・伐採・除草・防草施工',
@@ -69,7 +69,6 @@ function renderAll() {
   const schema = JSON.parse($('#businessSchema').textContent);
   schema.name = data.brand;
   schema.telephone = data.phone;
-  schema.areaServed = data.area;
   $('#businessSchema').textContent = JSON.stringify(schema);
   renderWorks();
   updateHeightOptions();

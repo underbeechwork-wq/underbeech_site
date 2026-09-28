@@ -1,2 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://underbeechwork-wq.github.io/underbeech_site/sitemap.xml

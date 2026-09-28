@@ -62,3 +62,8 @@ body{background:var(--paper);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic"
 .mobile-menu a.active{outline:2px solid #234632}
 @media(max-width:1100px){.nav a{min-width:112px;padding:10px 12px}.nav .nav-title{font-size:13px}.nav a small{font-size:9px}}
 @media(max-width:850px){.header{padding:12px 18px}.menu-btn{display:inline-flex;align-items:center;justify-content:center}.hero-copy{padding-top:24vh}.header.scrolled{padding:10px 18px}}
+
+
+/* v9 public business information */
+.area-detail{margin-top:28px;padding:22px;border:1px solid #cfd8cc;border-radius:18px;background:rgba(255,255,255,.55)}
+.area-detail h3{margin:0 0 12px;font-size:17px}.area-detail p{font-size:12px;line-height:1.9;color:#56645b;margin:12px 0}.area-detail strong{color:#1e3c2c}

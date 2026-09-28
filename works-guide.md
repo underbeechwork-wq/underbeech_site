@@ -1,42 +1,24 @@
-# 施工事例の追加方法
+# 施工事例追加ガイド
 
-1. `works/template.html` を複製します。
-2. ファイル名を半角英数字で作ります。例: `kawagoe-sentei-001.html`
-3. `【】`で囲まれた箇所を実際の施工内容に置き換えます。
-4. 施工写真を `assets/works/` に入れ、テンプレートの写真部分を `<img>` に置き換えます。
-5. 実際の内容が入ったら `<meta name="robots" content="noindex,nofollow">` を `index,follow,max-image-preview:large` に変更します。
-6. `works/index.html` にカードを追加します。
-7. `sitemap.xml` に施工事例URLを追加します。
-8. GitHubへアップロードして Commit changes を押します。
+施工事例を追加するときは `works/template.html` を複製して使います。
 
-## タイトル例
-`川越市でシマトネリコ約3mを剪定｜植木屋 アンダービーチ施工事例`
+## 公開前に確認すること
 
-## 掲載すると良い情報
-- 市区町村
-- 作業内容
-- 庭木の種類・高さ / 面積
-- 作業前後の写真
-- 作業時間
-- 料金の目安
-- お客様が困っていたこと
-- 施工で工夫した点
+1. 実際の施工写真だけを使用する
+2. 施工地域・樹種・高さ・料金・作業時間は、確認できた項目だけ記載する
+3. お客様の住所・表札・車のナンバーなど個人を特定できる情報が写っていないか確認する
+4. 写真は WebP に変換し、必要以上に大きな解像度にしない
+5. `title`、`description`、`canonical`、OG情報を施工内容に合わせる
+6. 公開準備ができるまでは `noindex,nofollow` のままにする
+7. 公開時に `index,follow,max-image-preview:large` へ変更する
+8. `works/index.html` に施工事例カードを追加する
+9. `sitemap.xml` に新しい施工事例URLを追加する
+10. 関連するサービスページから施工事例へ内部リンクを張る
 
-実際に行っていない施工事例や、実際と異なる料金・場所は掲載しないでください。
+## ファイル名の例
 
+- `works/kawagoe-sentei-shimatoneriko.html`
+- `images/kawagoe-sentei-before.webp`
+- `images/kawagoe-sentei-after.webp`
 
-## SEOチェック（公開前）
-- template.htmlを複製し、分かりやすい英数字ファイル名にする（例: kawagoe-sentei-shimatoneriko-202610.html）
-- title、description、H1を実際の施工内容に変更する
-- canonicalの【公開URL】を実際のURLへ変更する
-- Article構造化データの見出し・説明・URLを実際の内容へ変更する
-- noindex,nofollow を index,follow,max-image-preview:large へ変更する
-- 施工前・施工後の実写真を設定する
-- works/index.htmlから新しい施工事例へリンクする
-- sitemap.xmlに新しいURLを追加する
-- 架空の料金・作業時間・地域は記載しない
-
-
-## 独自ドメインでの公開URL
-
-施工事例の公開URLは `https://underbeech.com/works/ページ名.html` の形式にしてください。canonical と Article 構造化データのURLも同じURLへ変更します。
+SEO目的だけで地名を入れず、実際に施工した地域だけを使ってください。

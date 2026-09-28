@@ -568,3 +568,114 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .weather-notice strong{font-size:14px}
   .weather-notice p{font-size:12px;line-height:1.7}
 }
+
+
+/* ========================================================================
+   v22: public-site polish, accessibility, lighter photos, clearer contact
+======================================================================== */
+.skip-link{position:fixed;top:8px;left:8px;z-index:9999;padding:10px 14px;border-radius:10px;background:#173c2a;color:#fff;font-weight:800;transform:translateY(-150%);transition:transform .15s ease;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.skip-link:focus{transform:none}
+.weather-notice p a{font-weight:800;color:#4f512f;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.weather-notice p a:hover{color:#173c2a}
+#weather{scroll-margin-top:150px}
+.contact-checklist{padding:22px 24px;border-radius:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#e7eee8}
+.contact-checklist strong{display:block;font-size:15px;color:#fff;margin-bottom:10px}
+.contact-checklist ul{margin:0;padding-left:1.35em;display:grid;gap:5px;font-size:13px;line-height:1.7}
+.contact-checklist p{margin:10px 0 0;color:#bfcac2;font-size:12px;line-height:1.7}
+/* Keep the contact stack visually calm on wide screens. */
+.contact-options{align-content:start}
+/* Photo cards now load smaller 1200px assets; preserve a crisp max presentation. */
+.work-photo-grid img,.before-after-showcase img,.service-photo-band img{image-rendering:auto}
+@media(max-width:620px){
+  .contact-checklist{padding:18px 18px}
+  .contact-checklist ul{font-size:12px}
+  .weather-notice p a{display:inline-block;margin-top:4px}
+}
+
+
+/* ========================================================================
+   v23: first real work detail page
+======================================================================== */
+.works-feature-card{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:0;margin-top:34px;border:1px solid #e0e6dd;border-radius:28px;overflow:hidden;background:#fff;box-shadow:0 18px 48px rgba(24,57,38,.07);transition:transform .2s ease,box-shadow .2s ease}
+.works-feature-card:hover{transform:translateY(-3px);box-shadow:0 24px 58px rgba(24,57,38,.11)}
+.works-feature-images{display:grid;grid-template-columns:1fr 1fr;min-height:360px;background:#dfe6dc}
+.works-feature-images figure{position:relative;margin:0;overflow:hidden}
+.works-feature-images img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+.works-feature-card:hover .works-feature-images img{transform:scale(1.015)}
+.works-feature-images span{position:absolute;z-index:2;left:14px;top:14px;padding:7px 10px;border-radius:999px;background:#173c2a;color:#fff;font-size:11px;font-weight:800}
+.works-feature-images figure:last-child span{background:#eef0bd;color:#173122}
+.works-feature-copy{display:flex;flex-direction:column;justify-content:center;padding:38px}
+.works-feature-copy small{font-weight:800;color:#6b786e}
+.works-feature-copy h2{margin:8px 0 12px;font-size:clamp(25px,3vw,36px);line-height:1.35}
+.works-feature-copy p{margin:0;color:#657066;font-size:14px;line-height:1.9}
+.works-feature-copy strong{margin-top:26px;color:#173c2a;font-size:14px}
+.work-detail-hero{align-items:center}
+.work-detail-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.7fr);gap:50px;align-items:end;margin-bottom:30px}
+.work-detail-head .lead{margin:0}
+.work-detail-before-after{margin-top:0}
+.work-detail-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.work-detail-facts article{padding:20px;border:1px solid #e0e6dd;border-radius:18px;background:#fff}
+.work-detail-facts small{display:block;color:#6b786e;font-size:11px;font-weight:800;margin-bottom:5px}
+.work-detail-facts strong{display:block;font-size:15px;line-height:1.6}
+.work-detail-note{margin-top:26px;padding:26px;border-radius:22px;background:#f3f6f0;border:1px solid #e0e6dd}
+.work-detail-note h2{margin:0 0 8px;font-size:18px}
+.work-detail-note p{margin:0;color:#657066;font-size:13px;line-height:1.9}
+.work-detail-cta{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;padding:64px var(--pad);background:#173c2a;color:#fff}
+.work-detail-cta p{margin:0 0 8px;color:#c6d0c9;font-size:13px}
+.work-detail-cta h2{margin:0;font-size:clamp(28px,4vw,44px);line-height:1.45}
+.work-detail-cta>div:last-child{display:flex;gap:10px;align-items:center}
+.work-detail-cta .secondary-cta.light{border-color:rgba(255,255,255,.4);color:#fff}
+@media(max-width:900px){
+  .works-feature-card{grid-template-columns:1fr}
+  .works-feature-images{min-height:300px}
+  .work-detail-head{grid-template-columns:1fr;gap:16px}
+  .work-detail-facts{grid-template-columns:1fr}
+  .work-detail-cta{grid-template-columns:1fr;gap:24px}
+}
+@media(max-width:560px){
+  .works-feature-images{min-height:220px}
+  .works-feature-copy{padding:24px}
+  .works-feature-copy h2{font-size:26px}
+  .work-detail-cta{padding:44px 18px 100px}
+  .work-detail-cta>div:last-child{display:grid;width:100%}
+  .work-detail-cta a{justify-content:space-between}
+}
+
+
+/* v24 施工事例の閲覧性・回遊性 */
+.work-image-button{display:block;width:100%;padding:0;border:0;background:transparent;cursor:zoom-in;border-radius:inherit;overflow:hidden}.work-image-button img{display:block;width:100%;height:100%;object-fit:cover}.work-image-hint{display:block;margin-top:8px;color:#6b756d;font-size:11px}.work-detail-before-after figure{overflow:visible}.work-detail-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:30px 0}.work-detail-points article{padding:22px;border:1px solid #e1e6df;border-radius:20px;background:#fff;box-shadow:0 10px 28px rgba(25,62,41,.04)}.work-detail-points span{display:block;font-size:11px;font-weight:800;color:#718077}.work-detail-points strong{display:block;margin:8px 0;font-size:17px;color:#173c2a}.work-detail-points p{margin:0;color:#657068;font-size:13px;line-height:1.8}.work-related{background:#f7f9f5}.work-related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}.work-related-grid a{display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:end;padding:22px;border:1px solid #dfe6dc;border-radius:18px;background:#fff;transition:.18s ease}.work-related-grid a:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(25,62,41,.07)}.work-related-grid small{grid-column:1/-1;color:#6d786f;font-weight:800}.work-related-grid strong{font-size:15px}.work-related-grid span{font-size:18px}.service-work-link{max-width:1120px;margin:18px auto 0;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:24px;border:1px solid #dfe6dc;border-radius:20px;background:#f8faf6}.service-work-link div{display:grid;gap:4px}.service-work-link small{color:#6d786f;font-weight:800}.service-work-link strong{font-size:17px;color:#173c2a}.service-work-link a{display:inline-flex;align-items:center;gap:24px;padding:12px 16px;border-radius:999px;background:#173c2a;color:#fff;font-weight:800;white-space:nowrap}.work-lightbox{width:min(1100px,94vw);max-width:1100px;border:0;padding:0;background:transparent;overflow:visible}.work-lightbox::backdrop{background:rgba(8,18,12,.86);backdrop-filter:blur(3px)}.work-lightbox img{display:block;max-width:94vw;max-height:88vh;margin:auto;border-radius:16px;box-shadow:0 26px 80px rgba(0,0,0,.35)}.work-lightbox-close{position:fixed;right:clamp(14px,3vw,34px);top:clamp(14px,3vw,34px);width:46px;height:46px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;font-size:28px;line-height:1;z-index:2}.work-lightbox-close:hover{background:rgba(255,255,255,.22)}
+@media(max-width:760px){.work-detail-points,.work-related-grid{grid-template-columns:1fr}.service-work-link{margin-left:18px;margin-right:18px;align-items:flex-start;flex-direction:column}.service-work-link a{width:100%;justify-content:space-between}.work-image-hint{font-size:10px}}
+
+
+/* ========================================================================
+   v25 電話相談メモ
+======================================================================== */
+.consult-memo{padding:26px;border-radius:24px;background:#fff;color:#173c2a;border:1px solid #e1e7df;box-shadow:0 16px 40px rgba(15,46,31,.08)}
+.consult-memo-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.8fr);gap:20px;align-items:end;margin-bottom:22px}
+.consult-memo-head span{display:block;font-size:11px;font-weight:800;color:#768178;letter-spacing:.06em;margin-bottom:4px}
+.consult-memo-head h3{margin:0;font-size:24px;line-height:1.35}
+.consult-memo-head p{margin:0;font-size:11px;line-height:1.7;color:#748077}
+.consult-memo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.consult-memo-grid label{display:grid;gap:7px;font-size:12px;font-weight:800;color:#415347}
+.consult-memo-grid input,.consult-memo-grid select,.consult-memo-grid textarea{width:100%;border:1px solid #d9e1d7;border-radius:12px;background:#fafbf8;color:#173c2a;padding:12px 13px;outline:none;transition:border-color .18s ease,box-shadow .18s ease,background .18s ease}
+.consult-memo-grid textarea{resize:vertical;min-height:92px;line-height:1.7}
+.consult-memo-grid input:focus,.consult-memo-grid select:focus,.consult-memo-grid textarea:focus{border-color:#75917e;box-shadow:0 0 0 3px rgba(67,111,82,.11);background:#fff}
+.consult-memo-wide{grid-column:1/-1}
+.consult-memo-preview{margin-top:18px;padding:16px;border-radius:16px;background:#f1f5ed;border:1px solid #dce5d8}
+.consult-memo-preview>div{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+.consult-memo-preview>div span{font-size:12px;font-weight:900}
+.consult-memo-preview button{border:1px solid #bfd0c1;background:#fff;color:#173c2a;border-radius:999px;padding:8px 12px;font-size:11px;font-weight:800}
+.consult-memo-preview pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.85 "Yu Gothic","Hiragino Kaku Gothic ProN",system-ui,sans-serif;color:#354a3c}
+.copy-consult-status{min-height:1.6em;margin:7px 0 0;font-size:11px;color:#56705d}
+.consult-call-button{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 17px;border-radius:999px;background:#173c2a;color:#fff;font-size:13px;font-weight:900;transition:.18s ease}
+.consult-call-button:hover{background:#214b35;transform:translateY(-1px)}
+@media(max-width:720px){.consult-memo-head{grid-template-columns:1fr;gap:8px}.consult-memo-grid{grid-template-columns:1fr}.consult-memo-wide{grid-column:auto}.consult-memo{padding:20px}.consult-memo-head h3{font-size:21px}}
+
+
+/* v26: performance polish */
+@supports (content-visibility:auto){
+  .v15-service,.v15-works,.price,.flow,.v15-about,.area-preview,.v15-contact{
+    content-visibility:auto;
+    contain-intrinsic-size:auto 900px;
+  }
+}

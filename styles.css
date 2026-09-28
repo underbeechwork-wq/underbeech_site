@@ -67,3 +67,16 @@ body{background:var(--paper);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic"
 /* v9 public business information */
 .area-detail{margin-top:28px;padding:22px;border:1px solid #cfd8cc;border-radius:18px;background:rgba(255,255,255,.55)}
 .area-detail h3{margin:0 0 12px;font-size:17px}.area-detail p{font-size:12px;line-height:1.9;color:#56645b;margin:12px 0}.area-detail strong{color:#1e3c2c}
+
+
+/* v10 visible service-area section */
+.area-section{background:#f7f7f1}
+.area-head{margin-bottom:42px}
+.area-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.area-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:0 14px 38px rgba(31,65,42,.06)}
+.area-card-heading{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.area-label{display:inline-flex;align-items:center;justify-content:center;background:var(--lime);color:#203326;border-radius:999px;padding:7px 12px;font-size:11px;font-weight:800}
+.area-card h3{margin:0;font-size:21px;font-weight:800}
+.area-tags{display:flex;flex-wrap:wrap;gap:8px}
+.area-tags span{display:inline-flex;align-items:center;background:#f3f6ef;border:1px solid #dce4d8;border-radius:999px;padding:8px 11px;font-size:12px;line-height:1.2;color:#344239}
+@media(max-width:850px){.area-grid{grid-template-columns:1fr}.area-card{padding:22px 18px}.area-tags span{font-size:11px;padding:7px 10px}}

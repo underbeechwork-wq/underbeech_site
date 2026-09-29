@@ -696,3 +696,35 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .selected-estimate{background:#eef5eb;color:#173c2a;border:1px solid #cedccf;border-radius:14px;padding:14px 16px}
 .thanks-section{min-height:72vh;padding:clamp(120px,16vw,190px) var(--pad) 90px;background:#f7f9f5;display:grid;place-items:center}.thanks-card{width:min(760px,100%);background:#fff;border:1px solid #e0e7df;border-radius:28px;padding:clamp(28px,5vw,58px);box-shadow:0 22px 56px rgba(23,60,42,.08)}.thanks-card h1{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:clamp(34px,5vw,58px);font-weight:400;line-height:1.35;margin:.2em 0 .45em}.thanks-note{font-size:12px;color:#6c786f}.thanks-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:28px}.thanks-actions .primary-cta{background:#173c2a;color:#fff;border-color:#173c2a}.secondary-link{text-decoration:underline;text-underline-offset:4px;font-weight:700}
 @media(max-width:700px){.inquiry-grid{grid-template-columns:1fr}.inquiry-wide{grid-column:auto}.inquiry-form-head{display:grid;gap:5px}.inquiry-form{border-radius:20px}.contact-email-link{font-size:16px}.thanks-actions{display:grid}.thanks-actions a{text-align:center}}
+
+
+/* v30 footer phone */
+.footer-contact-label{font-size:11px;font-weight:700;letter-spacing:.04em;color:#738076!important}
+.footer-contact-label-mail{display:inline-block;margin-top:10px}
+.footer-phone{display:inline-block;font-size:clamp(20px,2vw,28px)!important;font-weight:800!important;line-height:1.3;color:#173c2a!important;letter-spacing:.02em;margin:3px 0}
+.footer-contact-hours{font-size:12px;color:#6d7a70!important}
+.subpage-footer .footer-phone{font-size:20px!important;font-weight:800!important;color:#173c2a!important}
+.subpage-footer .footer-contact-label{font-size:11px;color:#738076!important}
+.subpage-footer .footer-contact-hours{font-size:12px;color:#6d7a70!important}
+@media(max-width:620px){.footer-phone{font-size:22px!important}.subpage-footer .footer-phone{font-size:20px!important}}
+
+
+/* ========================================================================
+   v31 お問い合わせフォーム改装中表示
+======================================================================== */
+.form-maintenance-card{
+  background:#fff;color:#173c2a;border-radius:26px;padding:clamp(24px,4vw,44px);
+  box-shadow:0 22px 58px rgba(0,0,0,.16);border:1px solid rgba(23,60,42,.08);
+}
+.form-maintenance-badge{
+  display:inline-flex;align-items:center;padding:7px 11px;border-radius:999px;
+  background:#eef3e8;color:#315440;font-size:11px;font-weight:800;letter-spacing:.1em;
+}
+.form-maintenance-card h3{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:clamp(26px,3vw,38px);font-weight:500;line-height:1.4;margin:18px 0 10px}
+.form-maintenance-card p{margin:0 0 24px;color:#56665b;font-size:14px}
+.form-maintenance-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-maintenance-actions a{min-height:56px;border-radius:16px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;font-weight:800}
+.maintenance-mail{background:#173c2a;color:#fff}
+.maintenance-phone{background:#f3f6f1;color:#173c2a;border:1px solid #dce5d9}
+.form-maintenance-card>small{display:block;margin-top:16px;color:#738078}
+@media(max-width:620px){.form-maintenance-actions{grid-template-columns:1fr}.form-maintenance-card{border-radius:20px}}

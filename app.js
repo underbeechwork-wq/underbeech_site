@@ -81,7 +81,7 @@ function calc(){
 if($('#serviceSelect')){
   $('#serviceSelect').addEventListener('change',()=>{ updateHeightOptions(); $('#handShears').checked=false; $('#pineTree').checked=false; calc(); });
   ['treeHeight','treeCount','areaSize','hedgeHeight','hedgeLength','hedgeDepth','handShears','pineTree','disposalSelect'].forEach(id=>$('#'+id)?.addEventListener('input',calc));
-  $('#useEstimate')?.addEventListener('click',()=>{ const r=calc(); const price=r.quoteOnly?'要お見積り':yen(r.amount); const summary=`料金シミュレーター：${r.detail} / ${price}`; const selected=$('#selectedEstimate'); if(selected){ selected.textContent=summary; selected.classList.remove('hidden'); } const hidden=$('#estimateForForm'); if(hidden) hidden.value=summary; location.hash='contact'; });
+  $('#useEstimate')?.addEventListener('click',()=>{ const r=calc(); const price=r.quoteOnly?'要お見積り':yen(r.amount); const summary=`料金シミュレーター：${r.detail} / ${price}`; const selected=$('#selectedEstimate'); if(selected){ selected.textContent=summary; selected.classList.remove('hidden'); } location.hash='contact'; });
   updateHeightOptions(); calc();
 }
 
@@ -169,17 +169,13 @@ $('#useEstimate')?.addEventListener('click',()=>{
   sendAnalyticsEvent('estimate_check',{tool:'price_estimator'});
 });
 
-// お問い合わせフォームの送信開始。入力値はGAへ送らない。
-const inquiryForm=document.querySelector('.inquiry-form');
-if(inquiryForm){
-  let formStarted=false;
-  inquiryForm.addEventListener('focusin',()=>{
-    if(formStarted) return;
-    formStarted=true;
-    sendAnalyticsEvent('form_start',{form_name:'inquiry'});
-  },{once:true});
-  inquiryForm.addEventListener('submit',()=>{
-    try{ sessionStorage.setItem('underbeechLeadSubmitted','1'); }catch(e){}
-    sendAnalyticsEvent('form_submit_attempt',{form_name:'inquiry'});
+// v31: お問い合わせフォームは改装中のため、フォーム関連イベント計測を停止。
+
+// v30: footer phone click analytics
+document.querySelectorAll('a[href^="tel:"]').forEach(link=>{
+  link.addEventListener('click',()=>{
+    if(typeof window.gtag === 'function'){
+      window.gtag('event','contact_phone_click',{contact_method:'phone'});
+    }
   });
-}
+});

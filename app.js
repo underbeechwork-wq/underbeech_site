@@ -151,3 +151,35 @@ async function copyConsultMemo(){
 }
 $('#copyConsultMemo')?.addEventListener('click',copyConsultMemo);
 buildConsultMemo();
+
+
+// v28: Google Analytics 4 イベント計測（個人情報・フォーム入力値は送信しない）
+function sendAnalyticsEvent(name, params={}){
+  if(typeof window.gtag !== 'function') return;
+  window.gtag('event', name, params);
+}
+
+// メールリンクのクリック
+$$('a[href^="mailto:"]').forEach(link=>{
+  link.addEventListener('click',()=>sendAnalyticsEvent('contact_email_click',{contact_method:'email'}));
+});
+
+// 料金シミュレーター利用
+$('#useEstimate')?.addEventListener('click',()=>{
+  sendAnalyticsEvent('estimate_check',{tool:'price_estimator'});
+});
+
+// お問い合わせフォームの送信開始。入力値はGAへ送らない。
+const inquiryForm=document.querySelector('.inquiry-form');
+if(inquiryForm){
+  let formStarted=false;
+  inquiryForm.addEventListener('focusin',()=>{
+    if(formStarted) return;
+    formStarted=true;
+    sendAnalyticsEvent('form_start',{form_name:'inquiry'});
+  },{once:true});
+  inquiryForm.addEventListener('submit',()=>{
+    try{ sessionStorage.setItem('underbeechLeadSubmitted','1'); }catch(e){}
+    sendAnalyticsEvent('form_submit_attempt',{form_name:'inquiry'});
+  });
+}

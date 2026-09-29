@@ -28,3 +28,14 @@ GitHub へ更新するときは、ZIPの中身をリポジトリ直下へ上書�
 
 ### 初回のみ必要な作業
 公開後、自分でフォームを1回送信すると `underbeech0601@gmail.com` にFormSubmitから確認メールが届きます。メール内の確認リンクを押してフォームを有効化してください。確認前は通常のお問い合わせメールとして転送されません。
+
+
+## v28 Google Analytics 4
+- GA4 測定ID `G-01GZ6811BX` を全HTMLページへ設置
+- ページビューの自動計測を有効化
+- メールリンククリック `contact_email_click` を計測
+- 料金シミュレーター利用 `estimate_check` を計測
+- 問い合わせフォーム開始 `form_start` と送信試行 `form_submit_attempt` を計測
+- 送信完了ページで `generate_lead` を計測（フォーム送信から遷移した場合のみ）
+- フォームの氏名・メールアドレス・相談内容などの入力値はGA4へ送信しない
+- プライバシーポリシーへGoogle Analyticsの利用を追記

@@ -81,7 +81,7 @@ function calc(){
 if($('#serviceSelect')){
   $('#serviceSelect').addEventListener('change',()=>{ updateHeightOptions(); $('#handShears').checked=false; $('#pineTree').checked=false; calc(); });
   ['treeHeight','treeCount','areaSize','hedgeHeight','hedgeLength','hedgeDepth','handShears','pineTree','disposalSelect'].forEach(id=>$('#'+id)?.addEventListener('input',calc));
-  $('#useEstimate')?.addEventListener('click',()=>{ const r=calc(); const price=r.quoteOnly?'要お見積り':yen(r.amount); const selected=$('#selectedEstimate'); if(selected){ selected.textContent=`料金シミュレーター：${r.detail} / ${price}`; selected.classList.remove('hidden'); buildConsultMemo(); } location.hash='contact'; });
+  $('#useEstimate')?.addEventListener('click',()=>{ const r=calc(); const price=r.quoteOnly?'要お見積り':yen(r.amount); const summary=`料金シミュレーター：${r.detail} / ${price}`; const selected=$('#selectedEstimate'); if(selected){ selected.textContent=summary; selected.classList.remove('hidden'); } const hidden=$('#estimateForForm'); if(hidden) hidden.value=summary; location.hash='contact'; });
   updateHeightOptions(); calc();
 }
 
@@ -132,28 +132,6 @@ window.addEventListener('scroll',refreshHeader,{passive:true}); window.addEventL
 
 
 // v25: 電話相談用メモ（入力内容はブラウザ内のみで処理）
-const memoFields=['memoArea','memoService','memoScale','memoTiming','memoNote'];
-function buildConsultMemo(){
-  const out=$('#consultMemoText');
-  if(!out) return '';
-  const value=id=>($('#'+id)?.value||'').trim();
-  const selected=$('#selectedEstimate');
-  const lines=[
-    `市区町村：${value('memoArea')||'未入力'}`,
-    `希望する作業：${value('memoService')||'未選択'}`,
-    `本数・高さ・面積など：${value('memoScale')||'未入力'}`,
-    `希望時期：${value('memoTiming')||'未入力'}`
-  ];
-  const estimate=selected && !selected.classList.contains('hidden') ? selected.textContent.trim() : '';
-  if(estimate) lines.push(estimate);
-  const note=value('memoNote');
-  if(note) lines.push(`その他：${note}`);
-  const text=lines.join('\n');
-  out.textContent=text;
-  return text;
-}
-memoFields.forEach(id=>$('#'+id)?.addEventListener('input',buildConsultMemo));
-$('#memoService')?.addEventListener('change',buildConsultMemo);
 
 async function copyConsultMemo(){
   const status=$('#copyConsultStatus');

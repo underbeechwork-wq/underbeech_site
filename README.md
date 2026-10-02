@@ -1,4 +1,4 @@
-# 植木屋 アンダービーチ 公開サイト（v35）
+# 植木屋 アンダービーチ 公開サイト（v36）
 
 SEO・表示速度の最終点検版です。
 
@@ -98,3 +98,18 @@ PageSpeed Insights の LCP 内訳で、人物画像は取得済みなのに
 - スマホのみ人物背景の装飾用radial-gradientを省略
 - スマホの人物表示幅をわずかに縮小して描画面積を削減
 - SEO、電話、メール、料金、施工内容、PCデザインは変更なし
+
+
+## v36 Google Apps Script お問い合わせフォーム
+- 改装中表示を終了し、お問い合わせフォームを再開
+- 送信先: Google Apps Script Web App
+- Web App URL: https://script.google.com/macros/s/AKfycbzOVsdZHbM_xvxutyFjg46K33wIMd9DedfOS7M5cjR5NqB6EM-ioPRQOqd7YCVK30Ai/exec
+- 通知先メール: underbeech0601@gmail.com
+- 必須項目: お名前 / メールアドレス / お問い合わせ内容
+- 任意: 電話 / 市区町村 / 希望作業 / 本数・高さ・面積 / 希望時期 / 写真1枚
+- 写真: JPEG / PNG / WebP、4MB以下
+- Honeypotによる簡易スパム対策
+- 二重送信防止・送信中表示
+- 料金シミュレーター結果をフォームへ引き継ぎ
+- 送信成功後 thanks.html で GA4 generate_lead を計測
+- FormSubmit は使用しない

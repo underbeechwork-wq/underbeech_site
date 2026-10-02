@@ -81,7 +81,7 @@ function calc(){
 if($('#serviceSelect')){
   $('#serviceSelect').addEventListener('change',()=>{ updateHeightOptions(); $('#handShears').checked=false; $('#pineTree').checked=false; calc(); });
   ['treeHeight','treeCount','areaSize','hedgeHeight','hedgeLength','hedgeDepth','handShears','pineTree','disposalSelect'].forEach(id=>$('#'+id)?.addEventListener('input',calc));
-  $('#useEstimate')?.addEventListener('click',()=>{ const r=calc(); const price=r.quoteOnly?'要お見積り':yen(r.amount); const summary=`料金シミュレーター：${r.detail} / ${price}`; const selected=$('#selectedEstimate'); if(selected){ selected.textContent=summary; selected.classList.remove('hidden'); } location.hash='contact'; });
+  $('#useEstimate')?.addEventListener('click',()=>{ const r=calc(); const price=r.quoteOnly?'要お見積り':yen(r.amount); const summary=`料金シミュレーター：${r.detail} / ${price}`; const selected=$('#selectedEstimate'); if(selected){ selected.textContent=summary; selected.classList.remove('hidden'); } const estimateInput=$('#estimateForForm'); if(estimateInput) estimateInput.value=summary; location.hash='contact'; });
   updateHeightOptions(); calc();
 }
 
@@ -169,7 +169,114 @@ $('#useEstimate')?.addEventListener('click',()=>{
   sendAnalyticsEvent('estimate_check',{tool:'price_estimator'});
 });
 
-// v31: お問い合わせフォームは改装中のため、フォーム関連イベント計測を停止。
+// v36: Google Apps Script お問い合わせフォーム
+const inquiryForm=$('#inquiryForm');
+const contactAttachment=$('#contactAttachment');
+const contactSubmit=$('#contactSubmit');
+const formStatus=$('#formStatus');
+let formSubmitting=false;
+let formStarted=false;
+
+function setFormStatus(message,isError=false){
+  if(!formStatus) return;
+  formStatus.textContent=message||'';
+  formStatus.classList.toggle('is-error',Boolean(isError));
+}
+
+function setSubmitBusy(busy){
+  if(!contactSubmit) return;
+  contactSubmit.disabled=busy;
+  const label=contactSubmit.querySelector('.submit-label');
+  if(label) label.textContent=busy?'送信中です…':'お問い合わせを送信する';
+}
+
+function clearAttachmentFields(){
+  const data=$('#attachmentData');
+  const name=$('#attachmentName');
+  const mime=$('#attachmentMime');
+  if(data) data.value='';
+  if(name) name.value='';
+  if(mime) mime.value='';
+}
+
+function validateContactFile(file){
+  if(!file) return '';
+  const allowed=['image/jpeg','image/png','image/webp'];
+  if(!allowed.includes(file.type)) return '添付できる画像は JPEG・PNG・WebP です。';
+  if(file.size > 4*1024*1024) return '添付画像は4MB以下にしてください。';
+  return '';
+}
+
+contactAttachment?.addEventListener('change',()=>{
+  const file=contactAttachment.files?.[0];
+  const error=validateContactFile(file);
+  if(error){
+    contactAttachment.value='';
+    clearAttachmentFields();
+    setFormStatus(error,true);
+  }else{
+    setFormStatus(file?`選択中：${file.name}`:'');
+  }
+});
+
+inquiryForm?.addEventListener('input',()=>{
+  if(formStarted) return;
+  formStarted=true;
+  sendAnalyticsEvent('form_start',{form_name:'contact'});
+},{once:true});
+
+inquiryForm?.addEventListener('submit',(event)=>{
+  event.preventDefault();
+  if(formSubmitting) return;
+
+  if(!inquiryForm.reportValidity()) return;
+
+  const file=contactAttachment?.files?.[0];
+  const error=validateContactFile(file);
+  if(error){
+    setFormStatus(error,true);
+    return;
+  }
+
+  formSubmitting=true;
+  setSubmitBusy(true);
+  setFormStatus('送信準備中です。このままお待ちください。');
+
+  try{
+    sessionStorage.setItem('underbeech_contact_submit_pending','1');
+  }catch(e){}
+
+  sendAnalyticsEvent('form_submit_attempt',{form_name:'contact'});
+
+  const submitNative=()=>{
+    setFormStatus('送信しています。画面が切り替わるまでお待ちください。');
+    HTMLFormElement.prototype.submit.call(inquiryForm);
+  };
+
+  if(!file){
+    clearAttachmentFields();
+    submitNative();
+    return;
+  }
+
+  const reader=new FileReader();
+  reader.onload=()=>{
+    const data=$('#attachmentData');
+    const name=$('#attachmentName');
+    const mime=$('#attachmentMime');
+    if(data) data.value=String(reader.result||'');
+    if(name) name.value=file.name;
+    if(mime) mime.value=file.type;
+    submitNative();
+  };
+  reader.onerror=()=>{
+    formSubmitting=false;
+    setSubmitBusy(false);
+    try{ sessionStorage.removeItem('underbeech_contact_submit_pending'); }catch(e){}
+    setFormStatus('画像を読み込めませんでした。画像なしで送信するか、別の画像をお試しください。',true);
+  };
+  reader.readAsDataURL(file);
+});
 
 // v30: footer phone click analytics
 document.querySelectorAll('a[href^="tel:"]').forEach(link=>{

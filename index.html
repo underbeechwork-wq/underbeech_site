@@ -939,6 +939,18 @@ body{background:var(--site-cream)}
   }
 }
 
+
+/* v36: Google Apps Script お問い合わせフォーム */
+.form-status{min-height:1.5em;margin:0;font-size:12px;font-weight:700;color:#466353}
+.form-status.is-error{color:#a04436}
+.inquiry-submit[disabled]{opacity:.65;cursor:wait;transform:none!important}
+.contact-fallback{display:grid;gap:9px;padding:18px 20px;border:1px solid #607166;border-radius:18px;color:#dce5df}
+.contact-fallback>strong{font-size:13px}
+.contact-fallback>div{display:flex;flex-wrap:wrap;gap:9px}
+.contact-fallback a{display:inline-flex;padding:9px 12px;border:1px solid #728579;border-radius:999px;font-size:12px;font-weight:800}
+.contact-fallback small{color:#aebbb1}
+@media(max-width:560px){.contact-fallback>div{display:grid}.contact-fallback a{justify-content:center}}
+
 </style>
 <script id="businessSchema" type="application/ld+json">{
   "@context": "https://schema.org",
@@ -1449,7 +1461,7 @@ body{background:var(--site-cream)}
 <div class="section-head"><div><p class="section-en">ご依頼の流れ</p><h2>相談から施工まで</h2></div></div>
 <ol class="flow-list">
 <li><span>01</span><div><h3>料金の目安を確認</h3><p>サイト上で作業内容と大きさ・面積を選び、概算を確認します。</p></div></li>
-<li><span>02</span><div><h3>メール・電話でお問い合わせ</h3><p>現在、お問い合わせフォームは改装中です。メールまたはページ下部の電話番号からご相談ください。</p></div></li>
+<li><span>02</span><div><h3>フォーム・メール・電話でお問い合わせ</h3><p>お問い合わせフォームから、作業内容やご希望時期、写真などを送ってご相談いただけます。</p></div></li>
 <li><span>03</span><div><h3>正式なお見積り</h3><p>現地の状態や作業条件を確認して、正式な金額をご案内します。</p></div></li>
 <li><span>04</span><div><h3>施工・完了</h3><p>内容と金額をご確認いただいてから作業し、仕上がりをご確認いただきます。</p></div></li>
 </ol>
@@ -1467,21 +1479,99 @@ body{background:var(--site-cream)}
 <section class="contact section-pad v15-contact" id="contact">
 <div class="contact-heading">
 <p class="section-en">お問い合わせ</p>
-<h2>お問い合わせフォームは、<br/>現在改装中です。</h2>
-<p>より使いやすく安心して送信できるフォームへ改修しています。再開までの間は、メールまたはページ下部の電話番号からご相談ください。</p>
+<h2>庭のこと、<br/>まずは気軽にご相談ください。</h2>
+<p>庭木1本からご相談いただけます。分かる範囲で入力してください。写真がある場合は1枚添付できます。</p>
+<a class="contact-email-link" href="mailto:underbeech0601@gmail.com">underbeech0601@gmail.com</a>
+<small class="contact-email-note">メール・電話でのご相談も引き続き受け付けています。</small>
 </div>
 <div class="contact-options">
 <div aria-live="polite" class="selected-estimate hidden" id="selectedEstimate"></div>
-<div class="form-maintenance-card" role="status" aria-live="polite">
-<span class="form-maintenance-badge">FORM MAINTENANCE</span>
-<h3>お問い合わせフォーム改装中</h3>
-<p>現在、フォームからの送信を一時停止しています。ご不便をおかけしますが、メールまたはお電話をご利用ください。</p>
-<div class="form-maintenance-actions">
-<a class="maintenance-mail" href="mailto:underbeech0601@gmail.com">メールで問い合わせる <span>→</span></a>
-<a class="maintenance-phone" href="tel:09070795989">090-7079-5989 <span>↗</span></a>
+
+<form action="https://script.google.com/macros/s/AKfycbzOVsdZHbM_xvxutyFjg46K33wIMd9DedfOS7M5cjR5NqB6EM-ioPRQOqd7YCVK30Ai/exec" class="inquiry-form" enctype="multipart/form-data" id="inquiryForm" method="POST">
+<div class="inquiry-form-head">
+<span>お問い合わせフォーム</span>
+<strong>必須項目は3つです。</strong>
+</div>
+
+<input class="form-honeypot" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+<input id="estimateForForm" name="estimate" type="hidden" value="未使用"/>
+<input id="attachmentData" name="attachmentData" type="hidden" value=""/>
+<input id="attachmentName" name="attachmentName" type="hidden" value=""/>
+<input id="attachmentMime" name="attachmentMime" type="hidden" value=""/>
+
+<div class="inquiry-grid">
+<label>お名前 <em>必須</em>
+<input autocomplete="name" name="name" placeholder="例：山田 太郎" required type="text" maxlength="100"/>
+</label>
+
+<label>メールアドレス <em>必須</em>
+<input autocomplete="email" name="email" placeholder="例：example@gmail.com" required type="email" maxlength="254"/>
+</label>
+
+<label>電話番号 <span class="optional">任意</span>
+<input autocomplete="tel" inputmode="tel" name="phone" placeholder="例：090-1234-5678" type="tel" maxlength="30"/>
+</label>
+
+<label>市区町村 <span class="optional">任意</span>
+<input autocomplete="address-level2" name="city" placeholder="例：川越市" type="text" maxlength="100"/>
+</label>
+
+<label>ご希望の作業 <span class="optional">任意</span>
+<select name="service">
+<option value="">選択してください</option>
+<option>庭木剪定</option>
+<option>庭木の刈込</option>
+<option>伐採</option>
+<option>伐根</option>
+<option>草刈り・除草</option>
+<option>生垣の刈込</option>
+<option>庭木の消毒</option>
+<option>防草シート・砂利敷き</option>
+<option>その他・相談したい</option>
+</select>
+</label>
+
+<label>本数・高さ・面積など <span class="optional">任意</span>
+<input name="details" placeholder="例：3mくらいの木を2本" type="text" maxlength="300"/>
+</label>
+
+<label class="inquiry-wide">希望時期 <span class="optional">任意</span>
+<input name="timing" placeholder="例：10月中、急ぎではない" type="text" maxlength="200"/>
+</label>
+
+<label class="inquiry-wide">お問い合わせ内容 <em>必須</em>
+<textarea name="message" placeholder="庭の状態やお困りごとをご記入ください。" required rows="6" maxlength="5000"></textarea>
+</label>
+
+<label class="inquiry-wide">写真を添付 <span class="optional">任意</span>
+<input accept="image/jpeg,image/png,image/webp" id="contactAttachment" type="file" aria-describedby="attachmentHelp"/>
+<small id="attachmentHelp">JPEG・PNG・WebP、1枚、4MB以下。写真は作業内容の確認のために利用します。</small>
+</label>
+</div>
+
+<label class="privacy-consent">
+<input id="privacyConsent" required type="checkbox"/>
+<span><a href="privacy.html" rel="noopener" target="_blank">プライバシーポリシー</a>を確認し、送信に同意します。</span>
+</label>
+
+<p class="form-service-note">送信処理には Google Apps Script を利用します。入力内容はお問い合わせへの回答・見積もり・施工に関する連絡のために利用します。</p>
+
+<div aria-live="polite" class="form-status" id="formStatus"></div>
+
+<button class="inquiry-submit" id="contactSubmit" type="submit">
+<span class="submit-label">お問い合わせを送信する</span><span>→</span>
+</button>
+</form>
+
+<div class="contact-fallback">
+<strong>フォーム以外のお問い合わせ</strong>
+<div>
+<a href="mailto:underbeech0601@gmail.com">メールで問い合わせる</a>
+<a href="tel:09070795989">090-7079-5989</a>
 </div>
 <small>受付時間 8:00〜18:00 / 日曜休み</small>
 </div>
+
 <a class="contact-faq-link" href="faq.html">依頼前のよくある質問を見る →</a>
 </div>
 </section>
@@ -1489,11 +1579,11 @@ body{background:var(--site-cream)}
 <footer class="footer v15-footer">
 <div class="footer-brand footer-brand-full"><img alt="植木屋 アンダービーチ" decoding="async" height="120" loading="lazy" src="images/logo-display-256.webp" width="120"/><div><span>川越市の造園・庭のお手入れ</span></div></div>
 <div class="footer-links"><a href="#price">料金</a><a href="#service">作業内容</a><a href="works/">施工事例</a><a href="area.html">対応エリア</a><a href="faq.html">よくある質問</a><a href="privacy.html">プライバシーポリシー</a></div>
-<div><span class="footer-contact-label">電話でのお問い合わせ</span><br/><a class="footer-phone" href="tel:09070795989" onclick="if(window.gtag){gtag('event','contact_phone_click',{contact_method:'phone'});}">090-7079-5989</a><br/><span class="footer-contact-hours">8:00〜18:00 / 日曜休み</span><br/><span class="footer-contact-label footer-contact-label-mail">メール</span><br/><a href="mailto:underbeech0601@gmail.com">underbeech0601@gmail.com</a><span>お問い合わせはメール・電話をご利用ください</span></div>
+<div><span class="footer-contact-label">電話でのお問い合わせ</span><br/><a class="footer-phone" href="tel:09070795989" onclick="if(window.gtag){gtag('event','contact_phone_click',{contact_method:'phone'});}">090-7079-5989</a><br/><span class="footer-contact-hours">8:00〜18:00 / 日曜休み</span><br/><span class="footer-contact-label footer-contact-label-mail">メール</span><br/><a href="mailto:underbeech0601@gmail.com">underbeech0601@gmail.com</a><span>フォーム・メール・電話でお問い合わせいただけます</span></div>
 <small>© 2026 植木屋 アンダービーチ</small>
 </footer>
 <div class="mobile-cta v15-mobile-cta"><a href="#price">料金を見る</a><a href="#contact">問い合わせる</a></div>
-<script defer="" src="app.js?v=35"></script>
+<script defer="" src="app.js?v=36"></script>
 
 <script id="ga-delayed-loader">
 (function(){

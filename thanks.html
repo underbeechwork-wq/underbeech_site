@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 
-<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><title>お問い合わせフォーム改装中｜植木屋 アンダービーチ</title><meta content="noindex,nofollow" name="robots"/><link href="styles.css?v=35" rel="stylesheet"/><!-- Google tag (gtag.js) -->
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><title>お問い合わせ送信完了｜植木屋 アンダービーチ</title><meta content="noindex,nofollow" name="robots"/><link href="styles.css?v=36" rel="stylesheet"/><!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-01GZ6811BX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-01GZ6811BX');
+  try {
+    if (sessionStorage.getItem('underbeech_contact_submit_pending') === '1') {
+      gtag('event', 'generate_lead', {method: 'contact_form'});
+      sessionStorage.removeItem('underbeech_contact_submit_pending');
+    }
+  } catch (e) {}
 </script>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-v29.png">
@@ -16,6 +22,19 @@
 </head>
 <body class="subpage-body"><a class="skip-link" href="#mainContent">本文へ移動</a>
 <header class="subpage-header"><a class="subpage-logo brand-logo brand-logo-image" href="index.html"><img alt="植木屋 アンダービーチ" height="88" src="images/logo-display-144.webp" width="88"/><span class="sr-only">植木屋 アンダービーチ</span></a></header>
-<main id="mainContent"><section class="thanks-section"><div class="thanks-card"><p class="section-en">お問い合わせ</p><h1>お問い合わせフォームは現在改装中です。</h1><p>現在、フォームからの送信を一時停止しています。メールまたはお電話からお問い合わせください。</p><div class="thanks-actions"><a class="primary-cta" href="mailto:underbeech0601@gmail.com">メールで問い合わせる <span>→</span></a><a class="secondary-link" href="tel:09070795989">090-7079-5989</a></div></div></section></main>
+<main id="mainContent">
+<section class="thanks-section">
+<div class="thanks-card">
+<p class="section-en">お問い合わせ完了</p>
+<h1>お問い合わせを送信しました。</h1>
+<p>お問い合わせありがとうございます。内容を確認後、改めてご連絡いたします。</p>
+<p class="thanks-note">入力いただいたメールアドレスにも受付メールをお送りします。届かない場合は、迷惑メールフォルダもご確認ください。</p>
+<div class="thanks-actions">
+<a class="primary-cta" href="index.html">トップページへ戻る <span>→</span></a>
+<a class="secondary-link" href="tel:09070795989">お急ぎの場合：090-7079-5989</a>
+</div>
+</div>
+</section>
+</main>
 <footer class="subpage-footer"><div>植木屋 アンダービーチ</div><div><span class="footer-contact-label">電話でのお問い合わせ</span><br/><a class="footer-phone" href="tel:09070795989" onclick="if(window.gtag){gtag('event','contact_phone_click',{contact_method:'phone'});}">090-7079-5989</a><br/><span class="footer-contact-hours">8:00〜18:00 / 日曜休み</span><br/><span class="footer-contact-label footer-contact-label-mail">メール</span><br/><a href="mailto:underbeech0601@gmail.com">underbeech0601@gmail.com</a></div></footer>
 </body></html>

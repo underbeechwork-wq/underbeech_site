@@ -78,11 +78,68 @@ function calc(){
   return {amount,detail,quoteOnly};
 }
 
+
+const estimateItems=[];
+
+function estimatePriceLabel(item){
+  if(item.quoteOnly) return '要お見積り';
+  return yen(item.amount);
+}
+
+function renderEstimateItems(){
+  const wrap=$('#estimateItems');
+  const empty=$('#estimateEmpty');
+  const total=$('#estimateTotal');
+  if(!wrap || !total) return;
+
+  wrap.innerHTML='';
+  if(!estimateItems.length){
+    empty?.classList.remove('hidden');
+    total.textContent='0円〜';
+    return;
+  }
+
+  empty?.classList.add('hidden');
+  estimateItems.forEach((item,index)=>{
+    const row=document.createElement('div');
+    row.className='estimate-item';
+    row.innerHTML=`<span class="estimate-item-detail"></span><strong class="estimate-item-price"></strong><button class="estimate-item-remove" type="button" data-estimate-remove="${index}">削除</button>`;
+    row.querySelector('.estimate-item-detail').textContent=item.detail;
+    row.querySelector('.estimate-item-price').textContent=estimatePriceLabel(item);
+    wrap.appendChild(row);
+  });
+
+  const knownTotal=estimateItems.filter(item=>!item.quoteOnly).reduce((sum,item)=>sum+item.amount,0);
+  const hasQuoteOnly=estimateItems.some(item=>item.quoteOnly);
+  if(hasQuoteOnly && knownTotal>0){
+    total.textContent=`${Math.round(knownTotal).toLocaleString('ja-JP')}円〜 ＋ 要お見積り`;
+  }else if(hasQuoteOnly){
+    total.textContent='要お見積り';
+  }else{
+    total.textContent=yen(knownTotal);
+  }
+}
+
+document.addEventListener('click',(event)=>{
+  const remove=event.target.closest?.('[data-estimate-remove]');
+  if(!remove) return;
+  const index=Number(remove.dataset.estimateRemove);
+  if(Number.isInteger(index)){
+    estimateItems.splice(index,1);
+    renderEstimateItems();
+  }
+});
+
+$('#clearEstimateItems')?.addEventListener('click',()=>{
+  estimateItems.splice(0,estimateItems.length);
+  renderEstimateItems();
+});
+
 if($('#serviceSelect')){
   $('#serviceSelect').addEventListener('change',()=>{ updateHeightOptions(); $('#handShears').checked=false; $('#pineTree').checked=false; calc(); });
   ['treeHeight','treeCount','areaSize','hedgeHeight','hedgeLength','hedgeDepth','handShears','pineTree','disposalSelect'].forEach(id=>$('#'+id)?.addEventListener('input',calc));
-  $('#useEstimate')?.addEventListener('click',()=>{ const r=calc(); const price=r.quoteOnly?'要お見積り':yen(r.amount); const summary=`料金シミュレーター：${r.detail} / ${price}`; const selected=$('#selectedEstimate'); if(selected){ selected.textContent=summary; selected.classList.remove('hidden'); } const estimateInput=$('#estimateForForm'); if(estimateInput) estimateInput.value=summary; location.hash='contact'; });
-  updateHeightOptions(); calc();
+  $('#useEstimate')?.addEventListener('click',()=>{ const r=calc(); estimateItems.push({amount:r.amount,detail:r.detail,quoteOnly:r.quoteOnly}); renderEstimateItems(); });
+  updateHeightOptions(); calc(); renderEstimateItems();
 }
 
 const mobileMenu=$('#mobileMenu');
@@ -169,114 +226,7 @@ $('#useEstimate')?.addEventListener('click',()=>{
   sendAnalyticsEvent('estimate_check',{tool:'price_estimator'});
 });
 
-// v36: Google Apps Script お問い合わせフォーム
-const inquiryForm=$('#inquiryForm');
-const contactAttachment=$('#contactAttachment');
-const contactSubmit=$('#contactSubmit');
-const formStatus=$('#formStatus');
-let formSubmitting=false;
-let formStarted=false;
-
-function setFormStatus(message,isError=false){
-  if(!formStatus) return;
-  formStatus.textContent=message||'';
-  formStatus.classList.toggle('is-error',Boolean(isError));
-}
-
-function setSubmitBusy(busy){
-  if(!contactSubmit) return;
-  contactSubmit.disabled=busy;
-  const label=contactSubmit.querySelector('.submit-label');
-  if(label) label.textContent=busy?'送信中です…':'お問い合わせを送信する';
-}
-
-function clearAttachmentFields(){
-  const data=$('#attachmentData');
-  const name=$('#attachmentName');
-  const mime=$('#attachmentMime');
-  if(data) data.value='';
-  if(name) name.value='';
-  if(mime) mime.value='';
-}
-
-function validateContactFile(file){
-  if(!file) return '';
-  const allowed=['image/jpeg','image/png','image/webp'];
-  if(!allowed.includes(file.type)) return '添付できる画像は JPEG・PNG・WebP です。';
-  if(file.size > 4*1024*1024) return '添付画像は4MB以下にしてください。';
-  return '';
-}
-
-contactAttachment?.addEventListener('change',()=>{
-  const file=contactAttachment.files?.[0];
-  const error=validateContactFile(file);
-  if(error){
-    contactAttachment.value='';
-    clearAttachmentFields();
-    setFormStatus(error,true);
-  }else{
-    setFormStatus(file?`選択中：${file.name}`:'');
-  }
-});
-
-inquiryForm?.addEventListener('input',()=>{
-  if(formStarted) return;
-  formStarted=true;
-  sendAnalyticsEvent('form_start',{form_name:'contact'});
-},{once:true});
-
-inquiryForm?.addEventListener('submit',(event)=>{
-  event.preventDefault();
-  if(formSubmitting) return;
-
-  if(!inquiryForm.reportValidity()) return;
-
-  const file=contactAttachment?.files?.[0];
-  const error=validateContactFile(file);
-  if(error){
-    setFormStatus(error,true);
-    return;
-  }
-
-  formSubmitting=true;
-  setSubmitBusy(true);
-  setFormStatus('送信準備中です。このままお待ちください。');
-
-  try{
-    sessionStorage.setItem('underbeech_contact_submit_pending','1');
-  }catch(e){}
-
-  sendAnalyticsEvent('form_submit_attempt',{form_name:'contact'});
-
-  const submitNative=()=>{
-    setFormStatus('送信しています。画面が切り替わるまでお待ちください。');
-    HTMLFormElement.prototype.submit.call(inquiryForm);
-  };
-
-  if(!file){
-    clearAttachmentFields();
-    submitNative();
-    return;
-  }
-
-  const reader=new FileReader();
-  reader.onload=()=>{
-    const data=$('#attachmentData');
-    const name=$('#attachmentName');
-    const mime=$('#attachmentMime');
-    if(data) data.value=String(reader.result||'');
-    if(name) name.value=file.name;
-    if(mime) mime.value=file.type;
-    submitNative();
-  };
-  reader.onerror=()=>{
-    formSubmitting=false;
-    setSubmitBusy(false);
-    try{ sessionStorage.removeItem('underbeech_contact_submit_pending'); }catch(e){}
-    setFormStatus('画像を読み込めませんでした。画像なしで送信するか、別の画像をお試しください。',true);
-  };
-  reader.readAsDataURL(file);
-});
+// v38: お問い合わせフォームはGoogleフォーム移行準備のため一時停止中。
 
 // v30: footer phone click analytics
 document.querySelectorAll('a[href^="tel:"]').forEach(link=>{

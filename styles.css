@@ -740,3 +740,58 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .contact-fallback small{color:#aebbb1}
 @media(max-width:560px){.contact-fallback>div{display:grid}.contact-fallback a{justify-content:center}}
 
+
+/* v37: 添付画像の選択状態 */
+.attachment-selected{margin-top:7px;font-size:12px;font-weight:800;color:#466353}
+
+
+/* v38: estimate policy / multiple estimate / form maintenance */
+.estimate-policy{margin:0 0 28px;padding:26px;border:1px solid #c9d8ca;border-radius:24px;background:#f7fbf3}
+.estimate-policy-head{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:14px}
+.estimate-policy-head span{font-size:12px;font-weight:900;letter-spacing:.08em;color:#52705a}
+.estimate-policy-head strong{font-size:18px}
+.estimate-policy>p{margin:8px 0 14px;color:#53625a;font-size:13px}
+.estimate-free-areas{display:flex;flex-wrap:wrap;gap:7px}
+.estimate-free-areas span{padding:6px 9px;border-radius:999px;background:#e1eddd;color:#234832;font-size:11px;font-weight:800}
+.estimate-policy-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}
+.estimate-policy-grid article{padding:16px;border-radius:16px;background:#fff;border:1px solid #d8e1d7}
+.estimate-policy-grid strong{font-size:13px}
+.estimate-policy-grid p{margin:6px 0 0;font-size:12px;color:#667268}
+.estimate-policy-note{font-weight:700;color:#725c42!important}
+.multi-estimate{margin-top:18px;padding:24px;border-radius:24px;background:#fff;border:1px solid #cfd9cf}
+.multi-estimate-head{display:flex;justify-content:space-between;gap:18px;align-items:start}
+.multi-estimate-head>div{display:grid;gap:3px}
+.multi-estimate-head span{font-size:11px;font-weight:900;color:#5e765f;letter-spacing:.08em}
+.multi-estimate-head strong{font-size:17px}
+.multi-estimate-head button{border:1px solid #cbd5cb;background:transparent;border-radius:999px;padding:8px 12px;font-size:11px}
+.estimate-empty{margin-top:18px;padding:16px;border-radius:14px;background:#f5f7f2;color:#667268;font-size:12px}
+.estimate-items{display:grid;gap:8px;margin-top:16px}
+.estimate-item{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:13px 14px;border:1px solid #e0e5de;border-radius:14px}
+.estimate-item-detail{font-size:12px;font-weight:700}
+.estimate-item-price{font-size:13px;font-weight:900;white-space:nowrap}
+.estimate-item-remove{border:0;background:transparent;color:#8b554c;font-size:12px}
+.estimate-total{margin-top:18px;padding-top:18px;border-top:1px solid #d8dfd7;display:flex;justify-content:space-between;align-items:end}
+.estimate-total span{font-size:12px;font-weight:900}
+.estimate-total strong{font-size:28px;color:#173c2a}
+.multi-estimate>p{margin:10px 0 0;font-size:11px;color:#707970}
+.contact-maintenance-card{padding:28px;border:1px solid rgba(255,255,255,.18);border-radius:24px;background:rgba(255,255,255,.07)}
+.maintenance-badge{display:inline-flex;padding:6px 10px;border-radius:999px;background:#dfe8a7;color:#183824;font-size:10px;font-weight:900;letter-spacing:.12em}
+.contact-maintenance-card h3{margin:14px 0 8px;font-size:24px}
+.contact-maintenance-card>p{color:#c7d2ca;font-size:13px}
+.maintenance-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
+.maintenance-actions a{display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;padding:12px 15px;font-size:12px;font-weight:900;text-align:center}
+.maintenance-primary{background:#eef0bd;color:#173221}
+.maintenance-secondary{border:1px solid rgba(255,255,255,.32);color:#fff}
+.maintenance-contact-detail{display:grid;gap:4px;padding:16px 0;border-top:1px solid rgba(255,255,255,.15)}
+.maintenance-contact-detail strong{font-size:11px;color:#9fb2a4}
+.maintenance-contact-detail a{font-weight:800}
+.maintenance-contact-detail span{font-size:12px;color:#b9c7bd}
+.maintenance-note{margin:10px 0 0!important;font-size:11px!important}
+@media(max-width:760px){
+  .estimate-policy-head{display:grid}
+  .estimate-policy-grid{grid-template-columns:1fr}
+  .estimate-item{grid-template-columns:1fr auto}
+  .estimate-item-remove{grid-column:1/-1;text-align:right}
+  .maintenance-actions{grid-template-columns:1fr}
+}
+

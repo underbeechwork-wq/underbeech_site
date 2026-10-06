@@ -795,3 +795,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .maintenance-actions{grid-template-columns:1fr}
 }
 
+
+
+/* v40: 東京都世田谷区 プリペット剪定施工事例 */
+.latest-work-card{position:relative}
+.latest-work-card:before{content:"NEW";position:absolute;z-index:5;right:16px;top:16px;padding:7px 10px;border-radius:999px;background:#eef0bd;color:#173122;font-size:10px;font-weight:900;letter-spacing:.1em;box-shadow:0 6px 18px rgba(0,0,0,.10)}
+.work-sales-message{margin-top:26px;padding:28px;border-radius:22px;background:#173c2a;color:#fff}
+.work-sales-message p{margin:0 0 12px;color:#c8d5cc;font-size:13px;line-height:1.9}
+.work-sales-message strong{display:block;font-size:clamp(18px,2.2vw,25px);line-height:1.75}
+@media(max-width:620px){
+  .work-sales-message{padding:22px 18px}
+  .work-sales-message strong{font-size:18px}
+}
+

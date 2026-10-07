@@ -1,4 +1,4 @@
-# 植木屋 アンダービーチ 公開サイト（v41）
+# 植木屋 アンダービーチ 公開サイト（v42）
 
 SEO・表示速度の最終点検版です。
 
@@ -163,3 +163,13 @@ PageSpeed Insights の LCP 内訳で、人物画像は取得済みなのに
 - 施工前写真：ユーザー提供の対策済み画像へ更新（左端の黒帯は掲載用にトリミング調整）
 - setagaya-privet-before / after の派生画像（640 / 960 / 1200px WebP）を再生成
 - HTML の画像サイズ指定を 16:9 表示に合わせて更新
+
+
+## v42 Search Console インデックス整理
+- `privacy.html` を `noindex,follow` に変更
+- `privacy.html` を sitemap.xml から削除
+- 旧汎用施工例 `works/pruning-example-01.html` を、新しい世田谷区プリペット施工事例へ転送
+- 旧汎用施工例を sitemap.xml / 施工事例一覧 / CollectionPage 構造化データから削除
+- `bousou-sheet.html` は検索対象として維持
+- `bousou-sheet.html` の sitemap lastmod を 2026-10-07 に更新
+- トップ / 施工事例一覧 / 世田谷施工事例の lastmod を更新

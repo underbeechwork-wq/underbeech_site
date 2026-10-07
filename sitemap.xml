@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://underbeech.com/</loc>
-    <lastmod>2026-10-06</lastmod></url>
+    <lastmod>2026-10-07</lastmod></url>
   <url>
     <loc>https://underbeech.com/kawagoe.html</loc>
     </url>
@@ -17,13 +17,11 @@
     </url>
   <url>
     <loc>https://underbeech.com/bousou-sheet.html</loc>
-    </url>
-  <url>
-    <loc>https://underbeech.com/privacy.html</loc>
+    <lastmod>2026-10-07</lastmod>
     </url>
   <url>
     <loc>https://underbeech.com/works/</loc>
-    <lastmod>2026-10-06</lastmod></url>
+    <lastmod>2026-10-07</lastmod></url>
   <url>
     <loc>https://underbeech.com/area.html</loc>
     <lastmod>2026-10-02</lastmod></url>
@@ -31,10 +29,7 @@
     <loc>https://underbeech.com/faq.html</loc>
     <lastmod>2026-10-03</lastmod></url>
   <url>
-    <loc>https://underbeech.com/works/pruning-example-01.html</loc>
-    <lastmod>2026-09-28</lastmod></url>
-  <url>
     <loc>https://underbeech.com/works/setagaya-privet-pruning-01.html</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-07</lastmod>
   </url>
 </urlset>

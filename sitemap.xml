@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://underbeech.com/</loc>
-    <lastmod>2026-10-07</lastmod></url>
+    <lastmod>2026-10-08</lastmod></url>
   <url>
     <loc>https://underbeech.com/kawagoe.html</loc>
     </url>
@@ -21,7 +21,7 @@
     </url>
   <url>
     <loc>https://underbeech.com/works/</loc>
-    <lastmod>2026-10-07</lastmod></url>
+    <lastmod>2026-10-08</lastmod></url>
   <url>
     <loc>https://underbeech.com/area.html</loc>
     <lastmod>2026-10-02</lastmod></url>
@@ -31,5 +31,9 @@
   <url>
     <loc>https://underbeech.com/works/setagaya-privet-pruning-01.html</loc>
     <lastmod>2026-10-07</lastmod>
+  </url>
+  <url>
+    <loc>https://underbeech.com/works/fujimino-shimatoneriko-pruning-01.html</loc>
+    <lastmod>2026-10-08</lastmod>
   </url>
 </urlset>

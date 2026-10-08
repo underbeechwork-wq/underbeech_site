@@ -1,0 +1,28 @@
+[
+  {
+    "id": "fujimino-shimatoneriko-pruning-01",
+    "datePublished": "2026-10-08",
+    "place": "埼玉県ふじみ野市",
+    "service": "シマトネリコ剪定",
+    "title": "雨どいにかかるシマトネリコを剪定",
+    "summary": "雨どいにかかっていた枝を、雨どいから約30cm下になるよう整えました。",
+    "url": "works/fujimino-shimatoneriko-pruning-01.html",
+    "before": "images/fujimino-shimatoneriko-before.webp",
+    "after": "images/fujimino-shimatoneriko-after.webp",
+    "imageWidth": 1200,
+    "imageHeight": 900
+  },
+  {
+    "id": "setagaya-privet-pruning-01",
+    "datePublished": "2026-10-06",
+    "place": "東京都世田谷区・M様邸",
+    "service": "プリペット剪定",
+    "title": "約3mのプリペットをすっきり剪定",
+    "summary": "高さを程よく下げながら、横に広がった枝を中心に剪定しました。",
+    "url": "works/setagaya-privet-pruning-01.html",
+    "before": "images/setagaya-privet-before.webp",
+    "after": "images/setagaya-privet-after.webp",
+    "imageWidth": 1200,
+    "imageHeight": 675
+  }
+]

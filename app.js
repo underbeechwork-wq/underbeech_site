@@ -2,13 +2,13 @@ const $ = (s) => document.querySelector(s);
 const $$ = (s) => [...document.querySelectorAll(s)];
 
 const rates = {
-  prune12: 1000, prune23: 4000, prune34: 7000, prune4: 10000,
+  prune12: 2000, prune23: 4000, prune34: 7000, prune4: 10000,
   trim12: 1000, trim23: 3000, trim34: 6000, trim4: 9000,
   fell12: 3000, fell23: 6000, fell34: 9000, fell45: 12000, fell56: 15000, fell7: 20000,
   stump12: 4000, stump24: 10000,
   machineWeed: 300, manualWeed: 600, hedge: 1500,
   spray12: 2000, spray23: 4000, spray34: 6000, spray4: 8000,
-  leveling: 200, sheet: 2000, gravel: 2000, handShears: 1000
+  leveling: 200, sheet: 2000, sheetPremium: 4000, gravel: 2000, handShears: 1000
 };
 
 const heightConfig = {
@@ -21,7 +21,7 @@ const heightConfig = {
 
 function yen(n){ return Math.round(n).toLocaleString('ja-JP') + '円〜'; }
 function isHeightService(t){ return ['pruning','treeTrim','felling','stump','spray'].includes(t); }
-function isAreaService(t){ return ['machineWeed','manualWeed','leveling','sheet','gravel','sheetGravel'].includes(t); }
+function isAreaService(t){ return ['machineWeed','manualWeed','leveling','sheet','sheetPremium','gravel','sheetGravel','sheetGravelPremium'].includes(t); }
 
 function updateHeightOptions(){
   const type=$('#serviceSelect')?.value;
@@ -69,20 +69,48 @@ function calc(){
     $('#calcCaution').textContent='生垣は高さ×長さを概算面積として計算しています。奥行き・形状・作業量は正式見積り時に反映します。';
   } else {
     const a=Math.max(1,Number($('#areaSize').value)||1); let rate=0;
-    if(type==='machineWeed') rate=rates.machineWeed; if(type==='manualWeed') rate=rates.manualWeed; if(type==='leveling') rate=rates.leveling; if(type==='sheet') rate=rates.sheet; if(type==='gravel') rate=rates.gravel; if(type==='sheetGravel') rate=rates.sheet+rates.gravel;
+    if(type==='machineWeed') rate=rates.machineWeed;
+    if(type==='manualWeed') rate=rates.manualWeed;
+    if(type==='leveling') rate=rates.leveling;
+    if(type==='sheet') rate=rates.sheet;
+    if(type==='sheetPremium') rate=rates.sheetPremium;
+    if(type==='gravel') rate=rates.gravel;
+    if(type==='sheetGravel') rate=rates.sheet+rates.gravel;
+    if(type==='sheetGravelPremium') rate=rates.sheetPremium+rates.gravel;
+    if(['sheet','sheetPremium','sheetGravel','sheetGravelPremium'].includes(type)){
+      $('#calcCaution').textContent='防草シートの種類によって金額が変わります。整地・除草が必要な場合は別途となります。';
+    }
     amount=rate*a; detail=`${$('#serviceSelect option:checked').textContent} ${a}㎡`;
   }
-  const disposal=Number($('#disposalSelect').value)||0;
-  if(!quoteOnly && disposal){ amount+=disposal; detail+=disposal===3000?'＋処分費少量目安':'＋処分費軽トラ1台目安'; }
-  $('#estimatePrice').textContent=quoteOnly?'要お見積り':yen(amount); $('#estimateDetail').textContent=detail;
-  return {amount,detail,quoteOnly};
+  const disposalValue=$('#disposalSelect').value;
+  const disposalQuoteOnly=disposalValue==='small';
+  if(disposalQuoteOnly){
+    detail+='＋処分費（少量・別途お見積り）';
+    $('#calcCaution').textContent+=($('#calcCaution').textContent?' ':'')+'少量の処分費は固定料金では計算せず、別途お見積りします。';
+  }else if(disposalValue==='15000' || disposalValue==='30000'){
+    const disposalFee=Number(disposalValue);
+    amount+=disposalFee;
+    detail+=disposalValue==='15000'?'＋処分費（軽トラ満載・軽量物）':'＋処分費（軽トラ満載・丸太など重量物）';
+    $('#calcCaution').textContent+=($('#calcCaution').textContent?' ':'')+'処分料金は軽トラック1台・満載時の目安です。種類・重量・量や搬出条件によって変わります。';
+  }
+  $('#estimatePrice').textContent=estimatePriceLabel({amount,quoteOnly,disposalQuoteOnly});
+  $('#estimateDetail').textContent=detail;
+  return {amount,detail,quoteOnly,disposalQuoteOnly};
 }
 
 
 const estimateItems=[];
 
 function estimatePriceLabel(item){
-  if(item.quoteOnly) return '要お見積り';
+  if(item.quoteOnly && item.disposalQuoteOnly){
+    return item.amount>0?`${yen(item.amount)} ＋ 作業費・処分費要お見積り`:'要お見積り';
+  }
+  if(item.quoteOnly){
+    return item.amount>0?`${yen(item.amount)} ＋ 作業費要お見積り`:'要お見積り';
+  }
+  if(item.disposalQuoteOnly){
+    return `${yen(item.amount)} ＋ 処分費要お見積り`;
+  }
   return yen(item.amount);
 }
 
@@ -109,8 +137,8 @@ function renderEstimateItems(){
     wrap.appendChild(row);
   });
 
-  const knownTotal=estimateItems.filter(item=>!item.quoteOnly).reduce((sum,item)=>sum+item.amount,0);
-  const hasQuoteOnly=estimateItems.some(item=>item.quoteOnly);
+  const knownTotal=estimateItems.reduce((sum,item)=>sum+item.amount,0);
+  const hasQuoteOnly=estimateItems.some(item=>item.quoteOnly || item.disposalQuoteOnly);
   if(hasQuoteOnly && knownTotal>0){
     total.textContent=`${Math.round(knownTotal).toLocaleString('ja-JP')}円〜 ＋ 要お見積り`;
   }else if(hasQuoteOnly){
@@ -138,7 +166,7 @@ $('#clearEstimateItems')?.addEventListener('click',()=>{
 if($('#serviceSelect')){
   $('#serviceSelect').addEventListener('change',()=>{ updateHeightOptions(); $('#handShears').checked=false; $('#pineTree').checked=false; calc(); });
   ['treeHeight','treeCount','areaSize','hedgeHeight','hedgeLength','hedgeDepth','handShears','pineTree','disposalSelect'].forEach(id=>$('#'+id)?.addEventListener('input',calc));
-  $('#useEstimate')?.addEventListener('click',()=>{ const r=calc(); estimateItems.push({amount:r.amount,detail:r.detail,quoteOnly:r.quoteOnly}); renderEstimateItems(); });
+  $('#useEstimate')?.addEventListener('click',()=>{ const r=calc(); estimateItems.push({amount:r.amount,detail:r.detail,quoteOnly:r.quoteOnly,disposalQuoteOnly:r.disposalQuoteOnly}); renderEstimateItems(); });
   updateHeightOptions(); calc(); renderEstimateItems();
 }
 
@@ -186,28 +214,6 @@ function refreshHeader(){
   navItems.forEach(a=>a.classList.toggle('active',a.dataset.navTarget===current));
 }
 window.addEventListener('scroll',refreshHeader,{passive:true}); window.addEventListener('resize',refreshHeader); refreshHeader();
-
-
-// v25: 電話相談用メモ（入力内容はブラウザ内のみで処理）
-
-async function copyConsultMemo(){
-  const status=$('#copyConsultStatus');
-  const text=buildConsultMemo();
-  try{
-    if(navigator.clipboard && window.isSecureContext){
-      await navigator.clipboard.writeText(text);
-    }else{
-      const ta=document.createElement('textarea');
-      ta.value=text; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.opacity='0';
-      document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
-    }
-    if(status) status.textContent='相談内容をコピーしました。';
-  }catch(e){
-    if(status) status.textContent='コピーできませんでした。内容を長押し・選択してコピーしてください。';
-  }
-}
-$('#copyConsultMemo')?.addEventListener('click',copyConsultMemo);
-buildConsultMemo();
 
 
 // v28: Google Analytics 4 イベント計測（個人情報・フォーム入力値は送信しない）

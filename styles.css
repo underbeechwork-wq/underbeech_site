@@ -899,7 +899,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 @media(max-width:620px){.disposal-price-guide{padding:19px 17px}.disposal-price-guide-grid{grid-template-columns:1fr}.disposal-price-guide-heading strong{font-size:16px}}
 
 
-/* v47: ザバーン350Gの利点（標準プランの製品詳細は非公開） */
+/* v47: ザバーン素材の利点（標準プランの製品詳細は非公開） */
 .xavan-benefits{background:linear-gradient(150deg,#f0f5ec 0%,#f9fbf7 100%)}
 .xavan-benefits .inner{max-width:1200px;margin:0 auto}
 .xavan-benefits-head{display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:end;margin-bottom:28px}
@@ -921,3 +921,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 @media(max-width:980px){.xavan-benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.xavan-benefits-head{grid-template-columns:1fr;gap:12px}.xavan-benefits-grid{gap:10px}.xavan-benefit-card{padding:18px 15px}.xavan-benefit-card h3{font-size:15px}.xavan-benefit-card p{font-size:12px}.xavan-benefits-bottom{padding:19px 16px}.xavan-benefits-bottom>span{font-size:19px}.xavan-benefits-bottom>a{width:100%;text-align:center;margin-left:0}}
 @media(max-width:380px){.xavan-benefits-grid{grid-template-columns:1fr}}
+
+/* v48 高耐久タイプのお薦め表示：明るい背景と高コントラスト */
+.sheet-plan-premium{border:2px solid #99b788!important;background:#f4f8e9!important}
+.detail-card .sheet-recommend-label{display:inline-flex;align-items:center;justify-content:center;margin:0 0 12px;padding:5px 12px;border-radius:999px;background:#24543a;color:#fff;font-size:12px;line-height:1.5;font-weight:900;letter-spacing:.03em}
+.sheet-plan-premium h3{margin-top:0}

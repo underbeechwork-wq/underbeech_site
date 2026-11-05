@@ -242,3 +242,62 @@ document.querySelectorAll('a[href^="tel:"]').forEach(link=>{
     }
   });
 });
+
+
+// v49: 概算見積もりを Google フォームへ転記するためのコピー機能。
+// フォームは制作途中なので、公開サイト上ではリンクを掲載しません。
+// 将来、Googleフォームの「事前入力したリンク」を受け取った際は、
+// フォーム内の「作業内容の詳細」の entry 番号を確認して事前入力方式へ切り替えます。
+function estimateTextForForm(){
+  if(!estimateItems.length) return '';
+  const lines=['【お見積り内容（ホームページの概算）】'];
+  estimateItems.forEach((item,i)=>{
+    lines.push(`${i+1}. ${item.detail}`);
+    lines.push(`　目安：${estimatePriceLabel(item)}`);
+  });
+  const totalLabel=$('#estimateTotal')?.textContent || '要お見積り';
+  lines.push('',`【合計目安】${totalLabel}`);
+  lines.push('※表示額は概算であり、正式なお見積りでは現地状況・作業条件・搬出費等により変動します。');
+  if(estimateItems.some(item=>item.disposalQuoteOnly)){
+    lines.push('※少量の処分費は別途お見積りです（概算合計には未加算）。');
+  }
+  return lines.join('\n');
+}
+function updateEstimateExport(){
+  const preview=$('#estimateExportText');
+  const copyButton=$('#copyEstimateDetails');
+  if(!preview || !copyButton) return;
+  preview.value=estimateTextForForm() || 'まず「この作業を見積もりに追加」から作業を追加してください。';
+  copyButton.disabled=!estimateItems.length;
+  const status=$('#estimateExportStatus');
+  if(status) status.textContent=estimateItems.length
+    ?`追加済みの${estimateItems.length}件の作業をまとめてコピーできます。`
+    :'複数の作業を追加した場合も、まとめてコピーできます。';
+}
+async function copyEstimateForGoogleForm(){
+  const text=estimateTextForForm();
+  if(!text) return;
+  let copied=false;
+  if(navigator.clipboard && window.isSecureContext){
+    try{ await navigator.clipboard.writeText(text); copied=true; }catch(error){}
+  }
+  if(!copied){
+    const field=$('#estimateExportText');
+    if(field){
+      field.focus();field.select();
+      try{copied=document.execCommand('copy');}catch(error){}
+    }
+  }
+  const status=$('#estimateExportStatus');
+  if(status) status.textContent=copied
+    ?'コピーしました。Googleフォームの「作業内容の詳細」に貼り付けてください。'
+    :'自動コピーが利用できない場合は、上の文章を選択して手動でコピーしてください。';
+  if(copied && typeof sendAnalyticsEvent==='function'){
+    sendAnalyticsEvent('estimate_copy',{tool:'price_estimator'});
+  }
+}
+$('#copyEstimateDetails')?.addEventListener('click',copyEstimateForGoogleForm);
+// renderEstimateItems を拡張して作業リストの追加・削除とコピー欄を常に同期する。
+const renderEstimateItemsV48=renderEstimateItems;
+renderEstimateItems=function(){ renderEstimateItemsV48(); updateEstimateExport(); };
+updateEstimateExport();

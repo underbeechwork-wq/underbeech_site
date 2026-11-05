@@ -926,3 +926,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .sheet-plan-premium{border:2px solid #99b788!important;background:#f4f8e9!important}
 .detail-card .sheet-recommend-label{display:inline-flex;align-items:center;justify-content:center;margin:0 0 12px;padding:5px 12px;border-radius:999px;background:#24543a;color:#fff;font-size:12px;line-height:1.5;font-weight:900;letter-spacing:.03em}
 .sheet-plan-premium h3{margin-top:0}
+
+
+/* v49: 見積もり内容のコピー（Googleフォーム連携準備） */
+.estimate-export{margin-top:18px;padding:23px 24px;border:1px solid #b9d1bf;border-radius:24px;background:linear-gradient(145deg,#f7fbf6,#edf6ee)}
+.estimate-export-head{display:flex;gap:12px;align-items:flex-start}
+.estimate-export-icon{display:grid;place-items:center;background:#dcecdf;color:#28543a;width:34px;height:34px;border-radius:12px;flex:none;font-size:17px}
+.estimate-export h3{margin:0 0 5px;font-size:18px;line-height:1.45;color:#173c2a}
+.estimate-export-head p{margin:0;color:#4e6252;font-size:13px}
+.estimate-export-label{display:block;margin:17px 0 8px;color:#284833;font-weight:800;font-size:13px}
+.estimate-export-text{width:100%;box-sizing:border-box;resize:vertical;min-height:142px;padding:15px;border:1px solid #bfcfc2;background:#fff;border-radius:13px;color:#243a2c;font-size:13px;line-height:1.65;font-family:inherit}
+.estimate-export-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.estimate-export-actions button,.estimate-export-actions a{display:inline-flex;justify-content:center;align-items:center;box-sizing:border-box;min-height:45px;padding:11px 17px;border-radius:12px;font-size:13px;font-weight:900;text-decoration:none;cursor:pointer}
+.estimate-export-copy{background:#173c2a;border:1px solid #173c2a;color:#fff}
+.estimate-export-actions button:disabled{opacity:.45;cursor:not-allowed}
+.estimate-export-preview-link{background:#fff;border:1px solid #55715b;color:#173c2a}
+.estimate-export-status{font-size:12px;color:#386445;min-height:1.5em;margin:10px 0 0}
+.estimate-export-note{font-size:12px;color:#566d59;margin:8px 0 0;line-height:1.65}
+@media(max-width:600px){.estimate-export{padding:18px;border-radius:19px}.estimate-export h3{font-size:16px}.estimate-export-actions{flex-direction:column}.estimate-export-actions button,.estimate-export-actions a{width:100%}}

@@ -1113,6 +1113,24 @@ body{background:var(--site-cream)}
 .sheet-plan-summary-grid .sheet-plan-highlight{background:#f3f7e8;border:2px solid #9fbf8a}
 .sheet-plan-summary-grid .sheet-recommend-label{display:inline-flex;align-items:center;justify-content:center;width:max-content;max-width:100%;margin:0 0 8px;padding:4px 10px;border-radius:999px;background:#24543a;color:#fff;font-size:11px;font-weight:900;line-height:1.45;letter-spacing:.02em}
 .sheet-plan-summary-grid .sheet-plan-highlight>span:nth-of-type(2){margin-top:0}
+
+/* v49: 見積もり内容のコピー（Googleフォーム連携準備） */
+.estimate-export{margin-top:18px;padding:23px 24px;border:1px solid #b9d1bf;border-radius:24px;background:linear-gradient(145deg,#f7fbf6,#edf6ee)}
+.estimate-export-head{display:flex;gap:12px;align-items:flex-start}
+.estimate-export-icon{display:grid;place-items:center;background:#dcecdf;color:#28543a;width:34px;height:34px;border-radius:12px;flex:none;font-size:17px}
+.estimate-export h3{margin:0 0 5px;font-size:18px;line-height:1.45;color:#173c2a}
+.estimate-export-head p{margin:0;color:#4e6252;font-size:13px}
+.estimate-export-label{display:block;margin:17px 0 8px;color:#284833;font-weight:800;font-size:13px}
+.estimate-export-text{width:100%;box-sizing:border-box;resize:vertical;min-height:142px;padding:15px;border:1px solid #bfcfc2;background:#fff;border-radius:13px;color:#243a2c;font-size:13px;line-height:1.65;font-family:inherit}
+.estimate-export-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.estimate-export-actions button,.estimate-export-actions a{display:inline-flex;justify-content:center;align-items:center;box-sizing:border-box;min-height:45px;padding:11px 17px;border-radius:12px;font-size:13px;font-weight:900;text-decoration:none;cursor:pointer}
+.estimate-export-copy{background:#173c2a;border:1px solid #173c2a;color:#fff}
+.estimate-export-actions button:disabled{opacity:.45;cursor:not-allowed}
+.estimate-export-preview-link{background:#fff;border:1px solid #55715b;color:#173c2a}
+.estimate-export-status{font-size:12px;color:#386445;min-height:1.5em;margin:10px 0 0}
+.estimate-export-note{font-size:12px;color:#566d59;margin:8px 0 0;line-height:1.65}
+@media(max-width:600px){.estimate-export{padding:18px;border-radius:19px}.estimate-export h3{font-size:16px}.estimate-export-actions{flex-direction:column}.estimate-export-actions button,.estimate-export-actions a{width:100%}}
+
 </style>
 <script id="businessSchema" type="application/ld+json">{
   "@context": "https://schema.org",
@@ -1572,7 +1590,7 @@ body{background:var(--site-cream)}
 <div class="section-head"><div><p class="section-en">最近の施工事例</p><h2 id="recentWorksTitle">実際の施工を、<br/>写真で紹介。</h2></div><p>実際に行った剪定などの施工を、写真とともにご紹介。直近の事例をまとめてご覧いただけます。</p></div>
 <div class="recent-work-top">
   <div class="recent-work-guide"><strong>最新の施工事例</strong><span>左右にスクロールしてご覧ください</span></div>
-  <div class="recent-work-tools"><span id="recentWorkCount" class="recent-work-count">最新2件を表示</span>
+  <div class="recent-work-tools"><span id="recentWorkCount" class="recent-work-count">最新3件を表示</span>
     <div class="recent-work-controls" aria-label="施工事例の横スクロール操作">
       <button id="recentWorkPrev" type="button" aria-label="前の施工事例へ" aria-controls="recentWorkRail" disabled>←</button>
       <button id="recentWorkNext" type="button" aria-label="次の施工事例へ" aria-controls="recentWorkRail">→</button>
@@ -1580,6 +1598,7 @@ body{background:var(--site-cream)}
   </div>
 </div>
 <div class="recent-work-rail" id="recentWorkRail" tabindex="0" role="region" aria-roledescription="カルーセル" aria-label="最近の施工事例。横スクロールで移動できます">
+<a class="recent-work-card" data-work-id="kawagoe-parking-weeding-01" href="works/kawagoe-parking-weeding-01.html"><div class="recent-work-images"><figure><span>施工前</span><img src="images/kawagoe-parking-weeding-before.webp" srcset="images/kawagoe-parking-weeding-before-640.webp 640w, images/kawagoe-parking-weeding-before-960.webp 960w, images/kawagoe-parking-weeding-before.webp 1200w" sizes="(max-width:620px) 43vw, 30vw" width="1200" height="900" loading="lazy" decoding="async" alt="川越市 駐車場脇の雑木・雑草除去 施工前"/></figure><figure><span>施工後</span><img src="images/kawagoe-parking-weeding-after.webp" srcset="images/kawagoe-parking-weeding-after-640.webp 640w, images/kawagoe-parking-weeding-after-960.webp 960w, images/kawagoe-parking-weeding-after.webp 1200w" sizes="(max-width:620px) 43vw, 30vw" width="1200" height="900" loading="lazy" decoding="async" alt="川越市 駐車場脇の雑木・雑草除去 施工後"/></figure></div><div class="recent-work-body"><div class="recent-work-meta"><span>埼玉県川越市</span><span>雑木の切除・除草</span></div><h3>駐車場脇の雑木・雑草を整理</h3><p>フェンスの間に生えた雑木・雑草を切除し、仕上げに粒状除草剤を散布しました。</p><span class="recent-work-more">施工内容を見る <span aria-hidden="true">→</span></span></div></a>
 <a class="recent-work-card" data-work-id="fujimino-shimatoneriko-pruning-01" href="works/fujimino-shimatoneriko-pruning-01.html"><div class="recent-work-images"><figure><span>施工前</span><img src="images/fujimino-shimatoneriko-before.webp" srcset="images/fujimino-shimatoneriko-before-640.webp 640w, images/fujimino-shimatoneriko-before-960.webp 960w, images/fujimino-shimatoneriko-before.webp 1200w" sizes="(max-width:620px) 43vw, 30vw" width="1200" height="900" loading="lazy" decoding="async" alt="埼玉県ふじみ野市 シマトネリコ剪定 施工前"/></figure><figure><span>施工後</span><img src="images/fujimino-shimatoneriko-after.webp" srcset="images/fujimino-shimatoneriko-after-640.webp 640w, images/fujimino-shimatoneriko-after-960.webp 960w, images/fujimino-shimatoneriko-after.webp 1200w" sizes="(max-width:620px) 43vw, 30vw" width="1200" height="900" loading="lazy" decoding="async" alt="埼玉県ふじみ野市 シマトネリコ剪定 施工後"/></figure></div><div class="recent-work-body"><div class="recent-work-meta"><span>埼玉県ふじみ野市</span><span>シマトネリコ剪定</span></div><h3>雨どいにかかるシマトネリコを剪定</h3><p>雨どいにかかっていた枝を、雨どいから約30cm下になるよう整えました。</p><span class="recent-work-more">施工内容を見る <span aria-hidden="true">→</span></span></div></a>
 <a class="recent-work-card" data-work-id="setagaya-privet-pruning-01" href="works/setagaya-privet-pruning-01.html"><div class="recent-work-images"><figure><span>施工前</span><img src="images/setagaya-privet-before.webp" srcset="images/setagaya-privet-before-640.webp 640w, images/setagaya-privet-before-960.webp 960w, images/setagaya-privet-before.webp 1200w" sizes="(max-width:620px) 43vw, 30vw" width="1200" height="675" loading="lazy" decoding="async" alt="東京都世田谷区・M様邸 プリペット剪定 施工前"/></figure><figure><span>施工後</span><img src="images/setagaya-privet-after.webp" srcset="images/setagaya-privet-after-640.webp 640w, images/setagaya-privet-after-960.webp 960w, images/setagaya-privet-after.webp 1200w" sizes="(max-width:620px) 43vw, 30vw" width="1200" height="675" loading="lazy" decoding="async" alt="東京都世田谷区・M様邸 プリペット剪定 施工後"/></figure></div><div class="recent-work-body"><div class="recent-work-meta"><span>東京都世田谷区・M様邸</span><span>プリペット剪定</span></div><h3>約3mのプリペットをすっきり剪定</h3><p>高さを程よく下げながら、横に広がった枝を中心に剪定しました。</p><span class="recent-work-more">施工内容を見る <span aria-hidden="true">→</span></span></div></a>
 </div>
@@ -1690,6 +1709,24 @@ body{background:var(--site-cream)}
 <p>※ 少量の処分費など「要お見積り」と表示される金額は合計に含まれません。同じ処分物を複数の作業で選択した場合、実際のお見積りではまとめて調整する場合があります。</p>
 </div>
 
+<div class="estimate-export" id="estimateExport" aria-labelledby="estimateExportTitle">
+  <div class="estimate-export-head">
+    <span class="estimate-export-icon" aria-hidden="true">✉</span>
+    <div>
+      <h3 id="estimateExportTitle">お見積り内容をお問い合わせに引き継ぐ</h3>
+      <p>追加した作業の詳細と概算合計を、まとめてコピーできます。</p>
+    </div>
+  </div>
+  <label class="estimate-export-label" for="estimateExportText">コピーする内容</label>
+  <textarea id="estimateExportText" class="estimate-export-text" rows="7" readonly aria-label="お問い合わせに引き継ぐ見積もり内容">まず「この作業を見積もりに追加」から作業を追加してください。</textarea>
+  <div class="estimate-export-actions">
+    <button type="button" class="estimate-export-copy" id="copyEstimateDetails" disabled>見積もり内容をコピー</button>
+    <!-- PREVIEW_LINK_SLOT -->
+  </div>
+  <p class="estimate-export-status" id="estimateExportStatus" role="status" aria-live="polite">複数の作業を追加した場合も、まとめてコピーできます。</p>
+  <p class="estimate-export-note">※表示される金額は概算です。少量処分費などの未確定分は正式なお見積り時にご案内します。</p>
+</div>
+
 </section>
 <section class="flow section-pad" id="flow">
 <div class="section-index">04</div>
@@ -1744,8 +1781,8 @@ body{background:var(--site-cream)}
 <small>© 2026 植木屋 アンダービーチ</small>
 </footer>
 <div class="mobile-cta v15-mobile-cta"><a href="#price">料金を見る</a><a href="#contact">問い合わせる</a></div>
-<script defer="" src="app.js?v=46"></script>
-<script defer src="works/recent-carousel.js?v=44"></script>
+<script defer="" src="app.js?v=49"></script>
+<script defer src="works/recent-carousel.js?v=50"></script>
 
 <script id="ga-delayed-loader">
 (function(){

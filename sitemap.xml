@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://underbeech.com/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-11</lastmod>
     </url>
   <url>
     <loc>https://underbeech.com/kawagoe.html</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     </url>
   <url>
     <loc>https://underbeech.com/sentei.html</loc>
@@ -18,7 +18,6 @@
     </url>
   <url>
     <loc>https://underbeech.com/josou.html</loc>
-    <lastmod>2026-11-05</lastmod>
     </url>
   <url>
     <loc>https://underbeech.com/bousou-sheet.html</loc>
@@ -26,7 +25,7 @@
     </url>
   <url>
     <loc>https://underbeech.com/works/</loc>
-    <lastmod>2026-11-05</lastmod></url>
+    <lastmod>2026-11-11</lastmod></url>
   <url>
     <loc>https://underbeech.com/area.html</loc>
     <lastmod>2026-10-02</lastmod></url>
@@ -42,8 +41,4 @@
     <loc>https://underbeech.com/works/fujimino-shimatoneriko-pruning-01.html</loc>
     <lastmod>2026-10-08</lastmod>
   </url>
-  <url>
-    <loc>https://underbeech.com/works/kawagoe-parking-weeding-01.html</loc>
-    <lastmod>2026-11-05</lastmod>
-  </url>
-</urlset>
+<url><loc>https://underbeech.com/works/akishima-persimmon-pine-garden-01.html</loc><lastmod>2026-11-11</lastmod></url></urlset>

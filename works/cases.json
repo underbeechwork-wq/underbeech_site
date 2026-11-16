@@ -1,5 +1,44 @@
 [
   {
+    "id": "fujimino-kinmokusei-height-trimming-01",
+    "datePublished": "2026-11-16",
+    "place": "埼玉県ふじみ野市",
+    "service": "キンモクセイの高さ下げ・刈込",
+    "title": "キンモクセイを約3m超から約1.5mに刈込",
+    "summary": "高さ3mを少し超えるキンモクセイを約1.5mまで下げ、周囲を刈り込みました。",
+    "url": "works/fujimino-kinmokusei-height-trimming-01.html",
+    "before": "images/fujimino-kinmokusei-before.webp",
+    "after": "images/fujimino-kinmokusei-after.webp",
+    "imageWidth": 1200,
+    "imageHeight": 900
+  },
+  {
+    "id": "kawagoe-conifer-height-thinning-01",
+    "datePublished": "2026-11-16",
+    "place": "埼玉県川越市",
+    "service": "コニファーの高さ下げ・透かし剪定",
+    "title": "コニファーの高さ下げと枝の透かし剪定",
+    "summary": "高さを下げ、側面は控えめに剪定し、内部の枝を透かして整えました。",
+    "url": "works/kawagoe-conifer-height-thinning-01.html",
+    "before": "images/kawagoe-conifer-before.webp",
+    "after": "images/kawagoe-conifer-after.webp",
+    "imageWidth": 1200,
+    "imageHeight": 900
+  },
+  {
+    "id": "kawagoe-kinmokusei-height-reduction-01",
+    "datePublished": "2026-11-16",
+    "place": "埼玉県川越市",
+    "service": "キンモクセイの高さ下げ・剪定",
+    "title": "キンモクセイを約5mから約3mに剪定",
+    "summary": "高さ約5mのキンモクセイを約3mに下げ、枝を整理しました。",
+    "url": "works/kawagoe-kinmokusei-height-reduction-01.html",
+    "before": "images/kawagoe-kinmokusei-before.webp",
+    "after": "images/kawagoe-kinmokusei-after.webp",
+    "imageWidth": 1200,
+    "imageHeight": 900
+  },
+  {
     "id": "akishima-persimmon-pine-garden-01",
     "datePublished": "2026-11-11",
     "place": "東京都昭島市",

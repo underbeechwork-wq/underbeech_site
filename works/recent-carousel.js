@@ -38,7 +38,14 @@
     link.dataset.workId = entry.id;
     link.href = entry.url;
     const photos = add('div', 'recent-work-images');
-    photos.append(makeFigure(entry, 'before'), makeFigure(entry, 'after'));
+    if (entry.before && entry.after) {
+      photos.append(makeFigure(entry, 'before'), makeFigure(entry, 'after'));
+    } else {
+      photos.classList.add('is-pending');
+      const placeholder = add('div', 'work-photo-placeholder');
+      placeholder.append(add('strong', '', entry.service), add('span', '', '施工写真準備中'));
+      photos.append(placeholder);
+    }
     const body = add('div', 'recent-work-body');
     const meta = add('div', 'recent-work-meta');
     meta.append(add('span', '', entry.place), add('span', '', entry.service));
@@ -77,14 +84,14 @@
   updateButtons();
 
   // The static two-card markup remains usable if JSON cannot be loaded.
-  fetch('works/cases.json?v=51')
+  fetch('works/cases.json?v=54')
     .then(response => {
       if (!response.ok) throw new Error('List unavailable');
       return response.json();
     })
     .then(items => {
       if (!Array.isArray(items)) return;
-      const latest = items.filter(item => item && item.id && item.url && item.before && item.after && item.place && item.title)
+      const latest = items.filter(item => item && item.id && item.url && item.place && item.title)
         .sort((a, b) => String(b.datePublished || '').localeCompare(String(a.datePublished || '')))
         .slice(0, 5);
       if (!latest.length) return;

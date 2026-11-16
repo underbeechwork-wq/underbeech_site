@@ -944,3 +944,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .estimate-export-status{font-size:12px;color:#386445;min-height:1.5em;margin:10px 0 0}
 .estimate-export-note{font-size:12px;color:#566d59;margin:8px 0 0;line-height:1.65}
 @media(max-width:600px){.estimate-export{padding:18px;border-radius:19px}.estimate-export h3{font-size:16px}.estimate-export-actions{flex-direction:column}.estimate-export-actions button,.estimate-export-actions a{width:100%}}
+
+/* v53: text-only construction example until the user-supplied photos can be embedded. */
+.recent-work-images.is-pending{display:flex;min-height:240px;background:linear-gradient(135deg,#eff5e9,#cedfc9)}
+.work-photo-placeholder{display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#173c2a;padding:24px;text-align:center}
+.work-photo-placeholder strong{font-size:clamp(17px,2vw,23px)}
+.work-photo-placeholder span{font-size:12px;color:#647668}
+.works-feature-images.is-pending{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#eff5e9,#cedfc9);min-height:240px}
+.work-photo-pending{padding:34px;border-radius:20px;background:#eff5e9;color:#173c2a}
+.work-photo-pending p{margin:6px 0 0;color:#647668}

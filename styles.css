@@ -953,3 +953,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .works-feature-images.is-pending{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#eff5e9,#cedfc9);min-height:240px}
 .work-photo-pending{padding:34px;border-radius:20px;background:#eff5e9;color:#173c2a}
 .work-photo-pending p{margin:6px 0 0;color:#647668}
+
+/* Official social accounts */
+.site-social{margin-top:18px;min-width:0}
+.site-social .site-social-title{margin:0 0 8px;font-size:13px;font-weight:700;line-height:1.5}
+.site-social-links{display:flex;flex-wrap:wrap;gap:10px;min-width:0}
+.site-social-links .site-social-link{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;max-width:100%;padding:10px 14px;border:1px solid #cbd7cc;border-radius:10px;background:#fff;color:#173c2a!important;text-decoration:none;font-size:13px;line-height:1.4;transition:background .2s,border-color .2s}
+.site-social-links .site-social-link>span{margin:0;color:inherit!important}
+.site-social-links .site-social-link strong{display:block;font-size:13px;font-weight:700;letter-spacing:0}
+.site-social-links .site-social-link small{display:block;margin-top:3px;color:#5b6e60;font-size:11px;font-weight:400;letter-spacing:0;overflow-wrap:anywhere}
+.site-social-links .site-social-link:hover{background:#edf4eb;border-color:#8ea68e}
+.site-social-links .site-social-link:focus-visible{outline:3px solid #91ad81;outline-offset:3px}
+.site-social-contact{padding:18px;border:1px solid rgba(255,255,255,.22);border-radius:16px}
+@media(max-width:420px){.site-social-links .site-social-link{flex:1 1 140px}}

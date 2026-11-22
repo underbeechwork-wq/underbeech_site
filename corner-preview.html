@@ -1,19 +1,55 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>アンダービーチ｜角の形を比較</title>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>アンダービーチ｜クリックで角丸を指定</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:"Yu Gothic","Hiragino Kaku Gothic ProN",sans-serif;color:#183e2f;background:#e9eeeb}body{display:grid;grid-template-rows:auto minmax(0,1fr)}.bar{display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding:14px 22px;background:#fff;border-bottom:1px solid #bdccc1;box-shadow:0 2px 8px #183e2f0d;z-index:2}.heading{margin-right:auto}.heading strong{display:block;font-size:16px}.heading small{display:block;font-size:12px;color:#63776a;margin-top:4px}.group{display:flex;gap:5px}.bar button{font:inherit;font-weight:700;font-size:14px;padding:10px 14px;border:1px solid #b9c9bf;background:#fff;color:#224e37;cursor:pointer;border-radius:0;white-space:nowrap}.bar button[aria-pressed=true]{background:#174735;border-color:#174735;color:white}.bar button:focus-visible{outline:3px solid #e3ab38;outline-offset:2px}.jump{font:inherit;font-size:14px;padding:10px;border:1px solid #b9c9bf;background:#fff;color:#224e37}.stage{overflow:hidden;display:flex;justify-content:center;min-height:0;padding:0;transition:padding .2s}.stage.mobile{padding:12px}iframe{border:0;background:#fff;width:100%;height:100%;display:block;box-shadow:0 3px 22px #102e221a}.stage.mobile iframe{width:390px;max-width:100%}@media(max-width:650px){.bar{padding:10px;gap:8px}.heading{width:100%}.bar button{padding:8px 10px;font-size:13px}.jump{font-size:13px;padding:8px}.heading small{font-size:12px}}
+*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:"Yu Gothic","Hiragino Kaku Gothic ProN",sans-serif;color:#183e2f;background:#e9eeeb}body{display:grid;grid-template-rows:auto minmax(0,1fr)}button,select,input{font:inherit}button,select{font-size:14px;min-height:40px;padding:8px 12px;border:1px solid #b9c9bf;background:#fff;color:#224e37;border-radius:7px}button{cursor:pointer;font-weight:700}button[aria-pressed=true],.share{background:#174735;border-color:#174735;color:#fff}button:disabled{opacity:.4;cursor:default}button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #d8a835;outline-offset:2px}.editor{background:#fff;border-bottom:1px solid #b9c9bf;z-index:2;max-height:48vh;overflow:auto;box-shadow:0 2px 8px #183e2f0d;padding:12px 20px}.title-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}.title-row h1{font-size:17px;margin:0}.hint{margin:4px 0 10px;font-size:13px;color:#4f685a;line-height:1.6}.save-note{font-size:12px;color:#5e7467;margin-left:auto}.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.group{display:flex;gap:5px}.toolbar label{display:inline-flex;align-items:center;gap:5px;font-size:13px}.scope{padding:7px 4px}.scope input{width:17px;height:17px;accent-color:#174735}.actions{margin-top:9px;display:flex;flex-wrap:wrap;align-items:center;gap:7px}.status{font-size:13px;color:#345a45;margin:0 0 0 5px;line-height:1.5}.rules{margin-top:8px;font-size:13px}.rules summary{width:max-content;cursor:pointer;font-weight:700;padding:4px 0}.rules ol{margin:5px 0;padding:0;list-style:none;display:grid;gap:5px;max-height:135px;overflow:auto}.rules li{display:flex;align-items:center;gap:8px;background:#f2f6f3;border:1px solid #d5e0d8;padding:6px 9px}.rules li span:first-child{flex:1;min-width:0;overflow-wrap:anywhere}.rules li small{color:#5d7264}.rules li button{font-size:12px;padding:3px 8px;min-height:30px}.share-output{width:100%;margin-top:7px;padding:9px;border:1px solid #b9c9bf;border-radius:6px;font-size:12px;color:#375744;background:#f6faf7}.stage{overflow:hidden;display:flex;justify-content:center;min-height:0}.stage.mobile{padding:10px}iframe{border:0;background:#fff;width:100%;height:100%;display:block;box-shadow:0 3px 22px #102e221a}.stage.mobile iframe{width:390px;max-width:100%}@media(max-width:650px){.editor{padding:10px;max-height:52vh}.save-note{margin-left:0}.title-row{gap:6px}.title-row h1{font-size:16px}.hint{font-size:12px;margin-bottom:7px}button,select{font-size:13px;padding:7px 9px;min-height:37px}.toolbar{gap:6px}.toolbar label{font-size:12px}.status{width:100%;margin-left:0}.stage.mobile{padding:0}}
 </style></head><body>
-<header class="bar">
-<div class="heading"><strong>アンダービーチ｜角の見た目を比較</strong><small>正方形・高さが低い横長のUIだけ角丸にした版を追加</small></div>
-<div class="group" role="group" aria-label="角の形"><button type="button" data-shape="rounded" aria-pressed="false">現在の角丸あり</button><button type="button" data-shape="square" aria-pressed="false">角丸なし</button><button type="button" data-shape="mixed" aria-pressed="true">一部だけ角丸</button></div>
-<div class="group" role="group" aria-label="表示幅"><button type="button" data-width="desktop" aria-pressed="true">パソコン幅</button><button type="button" data-width="mobile" aria-pressed="false">スマホ幅</button></div>
-<select class="jump" aria-label="確認する場所"><option value="top">ページ上部</option><option value="price">料金の目安</option><option value="service">作業内容</option><option value="contact">お問い合わせ・SNS</option></select>
+<header class="editor">
+<div class="title-row"><h1>クリックで角丸を指定</h1><span class="save-note" id="save-note">このブラウザに自動保存</span></div>
+<p class="hint">指定モードで部品をクリックすると、角丸と直角が切り替わります。ページ内のリンクを使うときは「ページ操作」に切り替えてください。</p>
+<div class="toolbar">
+<div class="group" role="group" aria-label="操作モード"><button id="edit" type="button" aria-pressed="true">指定モード</button><button id="browse" type="button" aria-pressed="false">ページ操作</button></div>
+<label class="scope"><input id="group" type="checkbox" checked>同じ種類をまとめて</label>
+<label>基本の形<select id="base" aria-label="基本の形"><option value="mixed">一部だけ角丸</option><option value="square">すべて直角</option><option value="rounded">元の角丸</option></select></label>
+<label>表示<select id="width" aria-label="表示幅"><option value="desktop">パソコン幅</option><option value="mobile">スマホ幅</option></select></label>
+<select id="jump" aria-label="確認する場所"><option value="top">ページ上部</option><option value="price">料金の目安</option><option value="service">作業内容</option><option value="contact">お問い合わせ・SNS</option></select>
+</div>
+<div class="actions"><button id="undo" type="button" disabled>戻す</button><button id="clear" type="button" disabled>指定をクリア</button><button id="share" type="button" class="share">共有リンクをコピー</button><p id="status" class="status" aria-live="polite">丸みを変更したい部品をクリックしてください。</p></div>
+<details class="rules"><summary id="rule-count">指定した箇所：0件</summary><ol id="rule-list"></ol></details>
+<input class="share-output" id="share-output" aria-label="共有リンク" readonly hidden>
 </header>
-<main class="stage"><iframe src="./" title="アンダービーチの比較用プレビュー"></iframe></main>
+<main class="stage"><iframe src="./" title="角丸を指定するサイトのプレビュー"></iframe></main>
 <script>
 (()=>{
-let mode='mixed';
+'use strict';
+const storageKey='underbeech.corner-picker.v1';
 const frame=document.querySelector('iframe'),stage=document.querySelector('.stage');
+const byId=id=>document.getElementById(id);
+const historyStack=[];
+let state={v:1,base:'mixed',rules:[]},editing=true,observer=null,resizeWindow=null,tick=0,natural=new WeakMap(),candidates=new Set(),docNow=null,cleanup=()=>{},hover=null;
+function normalize(value){
+if(!value||value.v!==1||!['mixed','square','rounded'].includes(value.base)||!Array.isArray(value.rules))throw Error('invalid settings');
+return {v:1,base:value.base,rules:value.rules.slice(0,120).filter(r=>r&&typeof r.s==='string'&&r.s.length>0&&r.s.length<=700&&(r.a===0||r.a===1)).map(r=>({s:r.s,a:r.a,n:typeof r.n==='string'?r.n.slice(0,64):'部品',g:r.g!==false}))};
+}
+function encode(value){const bytes=new TextEncoder().encode(JSON.stringify(value));return btoa(String.fromCharCode(...bytes)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+function decode(value){const data=value.replace(/-/g,'+').replace(/_/g,'/');return JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(data),c=>c.charCodeAt(0))))}
+try{const saved=localStorage.getItem(storageKey);if(saved)state=normalize(JSON.parse(saved))}catch(error){}
+function readShared(){try{const match=location.hash.match(/^#corners=([A-Za-z0-9_-]+)$/);if(match&&match[1].length<=40000){state=normalize(decode(match[1]));byId('status').textContent='共有された指定を読み込みました。';return true}}catch(error){byId('status').textContent='共有リンクを読み込めませんでした。'}return false}readShared();
+function persist(){try{localStorage.setItem(storageKey,JSON.stringify(state));byId('save-note').textContent='このブラウザに自動保存'}catch(error){byId('save-note').textContent='保存するには共有リンクをコピーしてください'}if(location.hash.startsWith('#corners='))window.history.replaceState(null,'',location.pathname+location.search)}
+function snapshot(){historyStack.push(JSON.stringify(state));if(historyStack.length>60)historyStack.shift()}
+function notify(text){byId('status').textContent=text}
+function render(){
+byId('base').value=state.base;byId('undo').disabled=!historyStack.length;byId('clear').disabled=!state.rules.length;
+byId('rule-count').textContent='指定した箇所：'+state.rules.length+'件';
+const list=byId('rule-list');list.replaceChildren();
+if(!state.rules.length){const li=document.createElement('li');li.textContent='まだ指定していません。';list.appendChild(li)}
+state.rules.forEach((rule,index)=>{
+const li=document.createElement('li'),name=document.createElement('span'),kind=document.createElement('small'),button=document.createElement('button');
+name.textContent=rule.n+'：'+(rule.a?'角丸':'直角');kind.textContent=rule.g?'同じ種類':'この部品だけ';
+button.type='button';button.textContent='取り消す';button.setAttribute('aria-label',rule.n+'の指定を取り消す');
+button.addEventListener('click',()=>{snapshot();state.rules.splice(index,1);commit('指定を取り消しました。')});li.append(name,kind,button);list.appendChild(li);
+});
+}
+function commit(message){persist();render();apply();byId('share-output').hidden=true;if(message)notify(message)}
 const resetCSS=`
 html.corner-preview-measuring *,html.corner-preview-measuring *::before,html.corner-preview-measuring *::after{transition:none!important}
 html.corner-preview-square *,html.corner-preview-square *::before,html.corner-preview-square *::after,
@@ -21,68 +57,124 @@ html.corner-preview-mixed *,html.corner-preview-mixed *::before,html.corner-prev
 html.corner-preview-mixed [data-corner-round]{border-radius:var(--corner-radius)!important}
 html.corner-preview-mixed [data-corner-round-before]::before{border-radius:var(--corner-radius-before)!important}
 html.corner-preview-mixed [data-corner-round-after]::after{border-radius:var(--corner-radius-after)!important}
+html.corner-preview-mixed [data-corner-manual],html.corner-preview-square [data-corner-manual],html [data-corner-manual]{border-radius:var(--corner-manual-radius)!important}
+html.corner-picker-editing [data-corner-pickable]{cursor:crosshair!important}
+[data-corner-editor]{pointer-events:none!important}
+#corner-picker-outline{position:fixed;z-index:2147483645;border:2px solid #f0a928;background:rgba(240,169,40,.08);box-sizing:border-box;display:none;pointer-events:none!important}
+#corner-picker-label{position:fixed;z-index:2147483646;padding:7px 10px;background:#153d2c;color:#fff;border-radius:5px;font:700 12px/1.5 sans-serif;max-width:min(350px,95vw);display:none;pointer-events:none!important;box-shadow:0 3px 12px #0002}
 `;
-let observer=null,resizeWindow=null,tick=0;
-function wanted(width,height){
-if(width<=0||height<=0)return false;
-const ratio=width/height;
-return (ratio>=.9&&ratio<=1.1)||(height<=80&&ratio>=1.5);
+function hasRadius(radius){return (radius||'').split(/[\s/]+/).some(value=>parseFloat(value)>0)}
+function wanted(width,height){const ratio=width/height;return width>0&&height>0&&((ratio>=.9&&ratio<=1.1)||(height<=80&&ratio>=1.5))}
+function ownsUI(el){return !!el.closest('[data-corner-editor]')}
+function visualCandidate(el,css,rect){
+if(['HTML','BODY','MAIN','SCRIPT','STYLE','SVG','PATH','SOURCE','PICTURE','NAV','HEADER','FOOTER'].includes(el.tagName)||ownsUI(el))return false;
+if(rect.width<12||rect.height<12)return false;
+if(hasRadius(css.borderRadius)||['BUTTON','INPUT','SELECT','TEXTAREA','SUMMARY','IMG'].includes(el.tagName))return true;
+if(el.tagName==='A')return css.display!=='inline'&&(rect.height>=28||css.backgroundColor!=='rgba(0, 0, 0, 0)');
+const border=['Top','Bottom','Left','Right'].some(side=>parseFloat(css['border'+side+'Width'])>0);
+const background=css.backgroundColor!=='rgba(0, 0, 0, 0)'&&css.backgroundColor!=='transparent';
+return background&&(border||css.boxShadow!=='none');
 }
-function hasRadius(radius){return radius.split(/[\s/]+/).some(value=>parseFloat(value)>0)}
+function safeQuery(doc,selector){try{return [...doc.querySelectorAll(selector)].filter(el=>doc.body.contains(el)&&!ownsUI(el))}catch(error){return []}}
 function apply(){
 try{
 const doc=frame.contentDocument;if(!doc||!doc.head||!doc.body)return;
-let style=doc.getElementById('corner-preview-override');
-if(!style){style=doc.createElement('style');style.id='corner-preview-override';doc.head.appendChild(style)}
-if(style.textContent!==resetCSS)style.textContent=resetCSS;
-const root=doc.documentElement;
-root.classList.add('corner-preview-measuring');
-root.classList.remove('corner-preview-square','corner-preview-mixed');
-doc.querySelectorAll('[data-corner-round],[data-corner-round-before],[data-corner-round-after]').forEach(el=>{
-el.removeAttribute('data-corner-round');el.removeAttribute('data-corner-round-before');el.removeAttribute('data-corner-round-after');
-});
-if(mode==='mixed'){
-const keep=[];
+let style=doc.getElementById('corner-preview-override');if(!style){style=doc.createElement('style');style.id='corner-preview-override';doc.head.appendChild(style)}if(style.textContent!==resetCSS)style.textContent=resetCSS;
+const root=doc.documentElement;root.classList.add('corner-preview-measuring');root.classList.remove('corner-preview-square','corner-preview-mixed');
+doc.querySelectorAll('[data-corner-round],[data-corner-round-before],[data-corner-round-after],[data-corner-manual],[data-corner-pickable]').forEach(el=>{['data-corner-round','data-corner-round-before','data-corner-round-after','data-corner-manual','data-corner-pickable'].forEach(name=>el.removeAttribute(name))});
+natural=new WeakMap();candidates=new Set();const keep=[];
 doc.body.querySelectorAll('*').forEach(el=>{
-const rect=el.getBoundingClientRect();
-if(!rect.width||!rect.height)return;
-const css=frame.contentWindow.getComputedStyle(el);
+if(ownsUI(el))return;const rect=el.getBoundingClientRect();if(!rect.width||!rect.height)return;
+const css=frame.contentWindow.getComputedStyle(el);natural.set(el,css.borderRadius);
+if(visualCandidate(el,css,rect))candidates.add(el);
+if(state.base==='mixed'){
 if(hasRadius(css.borderRadius)&&wanted(rect.width,rect.height))keep.push({el,suffix:'',radius:css.borderRadius});
-['before','after'].forEach(pseudo=>{
-const p=frame.contentWindow.getComputedStyle(el,'::'+pseudo);
-if(p.content==='none'||p.content==='normal'||!hasRadius(p.borderRadius))return;
-const width=parseFloat(p.width),height=parseFloat(p.height);
-if(wanted(width,height))keep.push({el,suffix:'-'+pseudo,radius:p.borderRadius});
-});
+['before','after'].forEach(pseudo=>{const p=frame.contentWindow.getComputedStyle(el,'::'+pseudo);if(p.content==='none'||p.content==='normal'||!hasRadius(p.borderRadius))return;if(wanted(parseFloat(p.width),parseFloat(p.height)))keep.push({el,suffix:'-'+pseudo,radius:p.borderRadius})});
+}
 });
 keep.forEach(({el,suffix,radius})=>{el.style.setProperty('--corner-radius'+suffix,radius);el.setAttribute('data-corner-round'+suffix,'')});
-root.classList.add('corner-preview-mixed');
-}else if(mode==='square')root.classList.add('corner-preview-square');
-root.classList.remove('corner-preview-measuring');
-}catch(error){console.warn('このページには比較表示を適用できませんでした。')}
+if(state.base==='mixed')root.classList.add('corner-preview-mixed');if(state.base==='square')root.classList.add('corner-preview-square');
+state.rules.forEach(rule=>safeQuery(doc,rule.s).forEach(el=>{const original=natural.get(el);el.style.setProperty('--corner-manual-radius',rule.a?(hasRadius(original)?original:'10px'):'0px');el.setAttribute('data-corner-manual','');candidates.add(el)}));
+candidates.forEach(el=>el.setAttribute('data-corner-pickable',''));
+root.classList.toggle('corner-picker-editing',editing);root.classList.remove('corner-preview-measuring');
+if(hover&&!doc.body.contains(hover))hideHighlight();
+}catch(error){notify('このページでは指定できません。ページ上部に戻ってお試しください。')}
 }
 function schedule(){cancelAnimationFrame(tick);tick=requestAnimationFrame(apply)}
+function cssEscape(value){return frame.contentWindow.CSS.escape(value)}
+function usefulClasses(el){return [...el.classList].filter(c=>!/^corner-|^is-|^active$|^selected$|^open$|^v\d/.test(c))}
+function uniqueSelector(el){
+const doc=el.ownerDocument;
+if(el.id)return '#'+cssEscape(el.id);
+const classes=usefulClasses(el);
+for(const c of classes){const selector=el.tagName.toLowerCase()+'.'+cssEscape(c);if(safeQuery(doc,selector).length===1)return selector}
+const path=[];let node=el;
+while(node&&node!==doc.body&&path.length<12){
+if(node.id){path.unshift('#'+cssEscape(node.id));break}
+const siblings=[...node.parentElement.children].filter(n=>n.tagName===node.tagName);
+path.unshift(node.tagName.toLowerCase()+':nth-of-type('+(siblings.indexOf(node)+1)+')');node=node.parentElement;
+}
+if(node===doc.body)path.unshift('body');return path.join(' > ');
+}
+function groupSelector(el){
+const classes=usefulClasses(el);if(classes.length)return el.tagName.toLowerCase()+'.'+cssEscape(classes[0]);
+const parent=el.parentElement;if(parent&&usefulClasses(parent).length)return parent.tagName.toLowerCase()+'.'+cssEscape(usefulClasses(parent)[0])+' > '+el.tagName.toLowerCase();
+return uniqueSelector(el);
+}
+function label(el){
+const map={'site-social-link':'SNSボタン','site-social-icon':'SNSアイコン','site-social-contact':'SNS欄の外枠','contact-maintenance-card':'お問い合わせの枠','maintenance-primary':'メール相談ボタン','maintenance-secondary':'電話ボタン','contact-faq-link':'よくある質問のボタン','recent-work-card':'施工事例のカード','recent-work-controls':'施工事例の操作ボタン'};
+for(const c of el.classList)if(map[c])return map[c];
+const aria=el.getAttribute('aria-label')||el.getAttribute('alt');if(aria)return aria.replace(/\s+/g,' ').slice(0,32);
+const text=(el.innerText||'').replace(/\s+/g,' ').trim();if(text)return text.slice(0,27)+(text.length>27?'…':'');
+return ({BUTTON:'ボタン',A:'リンクボタン',IMG:'画像',INPUT:'入力欄',SELECT:'選択欄',TEXTAREA:'入力欄',ARTICLE:'カード',FIGURE:'画像の枠',SPAN:'アイコン',DIV:'枠'}[el.tagName]||'部品');
+}
+function targetFor(start){
+let el=start instanceof frame.contentWindow.Element?start:start.parentElement;
+while(el&&el!==frame.contentDocument.body){if(candidates.has(el))return el;el=el.parentElement}
+return null;
+}
+function hideHighlight(){hover=null;const doc=frame.contentDocument;if(!doc)return;['corner-picker-outline','corner-picker-label'].forEach(id=>{const el=doc.getElementById(id);if(el)el.style.display='none'})}
+function showHighlight(el){
+const doc=el.ownerDocument;hover=el;let outline=doc.getElementById('corner-picker-outline'),tip=doc.getElementById('corner-picker-label');
+if(!outline){outline=doc.createElement('div');outline.id='corner-picker-outline';outline.setAttribute('data-corner-editor','');tip=doc.createElement('div');tip.id='corner-picker-label';tip.setAttribute('data-corner-editor','');doc.body.append(outline,tip)}
+const r=el.getBoundingClientRect();Object.assign(outline.style,{display:'block',left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px'});
+const grouped=byId('group').checked,selector=grouped?groupSelector(el):uniqueSelector(el),count=safeQuery(doc,selector).length;
+tip.textContent='クリックで'+(hasRadius(frame.contentWindow.getComputedStyle(el).borderRadius)?'直角':'角丸')+'にする｜'+label(el)+(grouped&&count>1?'（'+count+'個まとめて）':'');
+Object.assign(tip.style,{display:'block',left:Math.min(Math.max(6,r.left),Math.max(6,frame.contentWindow.innerWidth-350))+'px',top:Math.max(5,r.top-38)+'px'});
+}
+function pick(el){
+const grouped=byId('group').checked,selector=grouped?groupSelector(el):uniqueSelector(el),rounded=hasRadius(frame.contentWindow.getComputedStyle(el).borderRadius),name=label(el);
+snapshot();state.rules=state.rules.filter(r=>r.s!==selector);state.rules.push({s:selector,a:rounded?0:1,n:name,g:grouped});if(state.rules.length>120)state.rules.shift();
+const count=safeQuery(el.ownerDocument,selector).length;commit(name+'を'+(rounded?'直角':'角丸')+'にしました。'+(grouped&&count>1?count+'個に適用。':''));showHighlight(el);
+}
 function bind(){
-if(observer)observer.disconnect();
-if(resizeWindow)resizeWindow.removeEventListener('resize',schedule);
-apply();
+cleanup();if(observer)observer.disconnect();if(resizeWindow)resizeWindow.removeEventListener('resize',schedule);hideHighlight();apply();
 try{
-resizeWindow=frame.contentWindow;resizeWindow.addEventListener('resize',schedule);
-observer=new MutationObserver(schedule);observer.observe(frame.contentDocument.body,{childList:true,subtree:true});
+const doc=frame.contentDocument;docNow=doc;resizeWindow=frame.contentWindow;resizeWindow.addEventListener('resize',schedule);
+const move=e=>{if(!editing)return;const el=targetFor(e.target);if(el)showHighlight(el);else hideHighlight()};
+const leave=()=>hideHighlight();
+const click=e=>{if(!editing)return;e.preventDefault();e.stopImmediatePropagation();const el=targetFor(e.target);if(el)pick(el);else notify('枠・ボタン・画像にカーソルを合わせて指定してください。')};
+const down=e=>{if(editing){e.preventDefault();e.stopImmediatePropagation()}};
+const key=e=>{if(e.key==='Escape'&&editing){setEditing(false);notify('ページ操作に切り替えました。')}};
+doc.addEventListener('pointermove',move,true);doc.addEventListener('pointerleave',leave,true);doc.addEventListener('click',click,true);doc.addEventListener('mousedown',down,true);doc.addEventListener('keydown',key,true);doc.addEventListener('scroll',leave,true);
+cleanup=()=>{doc.removeEventListener('pointermove',move,true);doc.removeEventListener('pointerleave',leave,true);doc.removeEventListener('click',click,true);doc.removeEventListener('mousedown',down,true);doc.removeEventListener('keydown',key,true);doc.removeEventListener('scroll',leave,true)};
+observer=new MutationObserver(mutations=>{if(mutations.some(m=>{const el=m.target.nodeType===1?m.target:m.target.parentElement;return !el||!ownsUI(el)}))schedule()});observer.observe(doc.body,{childList:true,subtree:true});
 }catch(error){}
 }
-document.querySelectorAll('[data-shape]').forEach(button=>button.addEventListener('click',()=>{
-mode=button.dataset.shape;document.querySelectorAll('[data-shape]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));apply();
-}));
-document.querySelectorAll('[data-width]').forEach(button=>button.addEventListener('click',()=>{
-stage.classList.toggle('mobile',button.dataset.width==='mobile');document.querySelectorAll('[data-width]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));schedule();
-}));
-frame.addEventListener('load',bind);
-document.querySelector('.jump').addEventListener('change',e=>{
-const doc=frame.contentDocument,id=e.target.value;
-if(id==='top')frame.contentWindow.scrollTo({top:0,behavior:'instant'});
-else{const el=doc.getElementById(id);if(el)el.scrollIntoView({behavior:'instant',block:'start'});else frame.src='./#'+encodeURIComponent(id);}
+function setEditing(value){editing=value;byId('edit').setAttribute('aria-pressed',String(value));byId('browse').setAttribute('aria-pressed',String(!value));hideHighlight();if(frame.contentDocument)frame.contentDocument.documentElement.classList.toggle('corner-picker-editing',value)}
+byId('edit').addEventListener('click',()=>{setEditing(true);notify('部品をクリックして、角丸と直角を切り替えられます。')});
+byId('browse').addEventListener('click',()=>{setEditing(false);notify('リンクやフォームを通常どおり操作できます。')});
+byId('base').addEventListener('change',e=>{snapshot();state.base=e.target.value;commit('基本の形を変更しました。個別の指定は残しています。')});
+byId('width').addEventListener('change',e=>{stage.classList.toggle('mobile',e.target.value==='mobile');hideHighlight();schedule()});
+byId('undo').addEventListener('click',()=>{if(!historyStack.length)return;state=normalize(JSON.parse(historyStack.pop()));commit('ひとつ前の指定に戻しました。')});
+byId('clear').addEventListener('click',()=>{snapshot();state.rules=[];commit('指定をクリアしました。「戻す」で取り消せます。')});
+byId('share').addEventListener('click',async()=>{
+const url=location.origin+location.pathname+'#corners='+encode(state),output=byId('share-output');output.value=url;output.hidden=false;
+try{await navigator.clipboard.writeText(url);notify('共有リンクをコピーしました。このチャットに貼り付けてください。')}catch(error){output.focus();output.select();notify('表示された共有リンクをコピーして、このチャットに貼り付けてください。')}
 });
-bind();
+byId('jump').addEventListener('change',e=>{hideHighlight();const doc=frame.contentDocument,id=e.target.value;if(id==='top')frame.contentWindow.scrollTo({top:0,behavior:'instant'});else{const el=doc.getElementById(id);if(el)el.scrollIntoView({behavior:'instant',block:'start'});else frame.src='./#'+encodeURIComponent(id)}});
+frame.addEventListener('load',bind);document.addEventListener('keydown',e=>{if(e.key==='Escape')setEditing(false)});
+window.addEventListener('hashchange',()=>{if(readShared()){historyStack.length=0;hideHighlight();persist();render();apply();byId('share-output').hidden=true;notify('共有された指定を読み込みました。')}});
+persist();render();bind();
 })();
 </script></body></html>

@@ -966,3 +966,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .site-social-links .site-social-link:focus-visible{outline:3px solid #91ad81;outline-offset:3px}
 .site-social-contact{padding:18px;border:1px solid rgba(255,255,255,.22);border-radius:16px}
 @media(max-width:420px){.site-social-links .site-social-link{flex:1 1 140px}}
+
+/* Social logo paths: https://simpleicons.org/ */
+.site-social-links .site-social-link{gap:10px}
+.site-social-links .site-social-link>.site-social-icon{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;flex:0 0 32px;border-radius:8px;background:#111;color:#fff!important}
+.site-social-links .site-social-link>.site-social-icon-instagram{background:linear-gradient(135deg,#feda75 0%,#fa7e1e 25%,#d62976 50%,#962fbf 75%,#4f5bd5 100%)}
+.site-social-icon svg{display:block;width:20px;height:20px;fill:#fff;flex:0 0 auto}
+.site-social-links .site-social-link>.site-social-label{min-width:0;flex:1 1 auto}
+.site-social-links .site-social-link>.site-social-arrow{flex:0 0 auto;font-size:16px}
+@media(max-width:420px){.site-social-links .site-social-link{flex-basis:100%;width:100%}}

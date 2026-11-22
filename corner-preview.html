@@ -29,7 +29,7 @@ frame.addEventListener('load',apply);
 document.querySelector('.jump').addEventListener('change',e=>{
 const doc=frame.contentDocument,id=e.target.value;
 if(id==='top')frame.contentWindow.scrollTo({top:0,behavior:'instant'});
-else{const el=doc.getElementById(id);if(el)el.scrollIntoView({behavior:'instant',block:'start'});}
+else{const el=doc.getElementById(id);if(el)el.scrollIntoView({behavior:'instant',block:'start'});else frame.src='./#'+encodeURIComponent(id);}
 });
 apply();
 })();

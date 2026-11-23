@@ -58,6 +58,10 @@ if(records.some(record=>record.type==='attributes'||[...record.addedNodes,...rec
 }).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden','open']});
 window.addEventListener('resize',schedule,{passive:true});
 window.addEventListener('load',schedule,{once:true});
+if('IntersectionObserver' in window){
+const visibleSections=new IntersectionObserver(entries=>{if(entries.some(entry=>entry.isIntersecting))schedule()});
+document.querySelectorAll('.v15-service,.v15-works,.price,.flow,.v15-about,.area-preview,.v15-contact').forEach(el=>visibleSections.observe(el));
+}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();

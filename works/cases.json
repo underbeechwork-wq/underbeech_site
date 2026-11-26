@@ -1,5 +1,18 @@
 [
   {
+    "id": "kawagoe-keyaki-felling-01",
+    "datePublished": "2026-11-26",
+    "place": "埼玉県川越市",
+    "service": "ケヤキの伐採",
+    "title": "高さ約15mのケヤキを根元から伐採",
+    "summary": "電線にかかっていた高さ約15mのケヤキを、根元から伐採しました。",
+    "url": "works/kawagoe-keyaki-felling-01.html",
+    "before": "images/kawagoe-keyaki-before.webp",
+    "after": "images/kawagoe-keyaki-after.webp",
+    "imageWidth": 1200,
+    "imageHeight": 900
+  },
+  {
     "id": "fujimino-kinmokusei-height-trimming-01",
     "datePublished": "2026-11-16",
     "place": "埼玉県ふじみ野市",

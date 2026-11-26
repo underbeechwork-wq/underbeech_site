@@ -994,3 +994,19 @@ main>.compact-local,main>.v15-works{padding-top:64px;padding-bottom:64px}
 .subpage-hero{padding-top:40px;padding-bottom:44px}
 .content-section{padding-top:48px;padding-bottom:48px}
 }
+
+/* Slightly stronger secondary text on light backgrounds. */
+:root{--muted:#48594d}
+.subpage-body .breadcrumb,
+.subpage-body main .subpage-hero>div:first-child>p,
+.subpage-body main .lead,
+.subpage-body main .detail-card p,
+.subpage-body main .faq-item p,
+.subpage-body main .area-note,
+.subpage-body main .works-feature-copy p,
+.subpage-body main .works-feature-copy small,
+.subpage-body main .work-detail-note p,
+.subpage-body main .work-detail-facts small,
+.subpage-body main .service-photo-band figcaption,
+.subpage-body main .work-image-hint{color:var(--muted)}
+.subpage-body main .case-facts dt{color:var(--muted)}

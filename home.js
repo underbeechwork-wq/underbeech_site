@@ -386,7 +386,7 @@ updateEstimateExport();
   updateButtons();
 
   // The static two-card markup remains usable if JSON cannot be loaded.
-  fetch('works/cases.json?v=64')
+  fetch('works/cases.json?v=65')
     .then(response => {
       if (!response.ok) throw new Error('List unavailable');
       return response.json();
